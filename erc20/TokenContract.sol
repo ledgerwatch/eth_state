@@ -3,10 +3,6 @@ pragma solidity ^0.5.0;
 contract Token {
     uint256 public totalSupply;
 
-    /* This creates an array with all balances */
-    mapping (address => uint256) public balanceOf;
-    mapping (address => mapping (address => uint256)) public allowance;
-
     /* This generates a public event on the blockchain that will notify clients */
     event Transfer(address indexed from, address indexed to, uint256 value);
 
@@ -35,14 +31,14 @@ contract Token {
     }
 
     /* Allow another contract to spend some tokens in your behalf */
-    function approve(address _spender, uint256 _value) public returns (bool success) {
+    function approve(address _spender, uint256 _value) public returns (bool) {
         Holder fromContract = getHolderContract(msg.sender);
         fromContract.setAllowance(_spender, _value);
         return true;
     }
 
     /* A contract attempts to get the tokens */
-    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool) {
         Holder fromContract = getHolderContract(_from);
         Holder toContract = getHolderContract(_to);
         uint256 fromBalance = fromContract.getBalance();
@@ -56,6 +52,16 @@ contract Token {
         fromContract.setAllowance(msg.sender, fromAllowance - _value);
         emit Transfer(_from, _to, _value);
         return true;
+    }
+
+    function balanceOf(address a) public view returns (uint256) {
+        Holder c = getHolderContract(a);
+        return c.getBalance();
+    }
+
+    function allowance(address a, address _spender) public view returns (uint256) {
+        Holder c = getHolderContract(a);
+        return c.getAllowance(_spender);
     }
 
     address public minter;
