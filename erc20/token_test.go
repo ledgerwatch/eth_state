@@ -29,14 +29,14 @@ func newTestBackend() *backends.SimulatedBackend {
         }, 0)
 }
 
-func mustDeploy(t *testing.T) (*backends.SimulatedBackend, *Token) {
+func mustDeployFactory(t *testing.T) (*backends.SimulatedBackend, *Factory) {
     b := newTestBackend()
-    _, _, token, err := DeployToken(deployer, b)
+    _, _, factory, err := DeployFactory(deployer, b)
     if err != nil {
         t.Errorf("Could not deploy ChannelBook contract")
     }
     b.Commit()
-    return b, token    
+    return b, factory
 }
 
 func commitAndGetReceipt(t *testing.T, b *backends.SimulatedBackend, tx *types.Transaction, err error) (*types.Receipt) {
@@ -47,10 +47,16 @@ func commitAndGetReceipt(t *testing.T, b *backends.SimulatedBackend, tx *types.T
     ctx := context.Background()
     r, err := b.TransactionReceipt(ctx, tx.Hash())
     if err != nil || r == nil {
-        t.Errorf("Could not get tx receipt for %v: %v", tx.Hash(), err)
+        t.Errorf("Could not get tx receipt for %x: %v", tx.Hash(), err)
     }
     return r
 }
 
-func TestMint(t *testing.T) {
+func TestCreateTokenContract(t *testing.T) {
+    b, factory := mustDeployFactory(t)
+    tx, err := factory.CreateToken(&bind.TransactOpts{From: alice.From, Signer: alice.Signer, Value: big.NewInt(0)}, alice.From)
+    r := commitAndGetReceipt(t, b, tx, err)
+    if r != nil && r.Status != types.ReceiptStatusSuccessful {
+        t.Errorf("Alice could not create token contract, tx failed")
+    }
 }
