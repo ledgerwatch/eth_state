@@ -20,12 +20,16 @@ var (
 
     alice_key, _ = crypto.GenerateKey()
     alice = bind.NewKeyedTransactor(alice_key)
-    )
+
+    bob_key, _ = crypto.GenerateKey()
+    bob = bind.NewKeyedTransactor(bob_key)
+)
 
 func newTestBackend() *backends.SimulatedBackend {
     return backends.NewSimulatedBackend(core.GenesisAlloc{
         deployer.From: {Balance: big.NewInt(10000000000)},
         alice.From: {Balance: big.NewInt(0).Mul(one_Ether, big.NewInt(100))}, // Alice has 100 ETH
+        bob.From: {Balance: big.NewInt(0).Mul(one_Ether, big.NewInt(100))}, // Bob has 100 ETH
         }, 0)
 }
 
@@ -42,6 +46,7 @@ func mustDeployFactory(t *testing.T) (*backends.SimulatedBackend, *Factory) {
 func commitAndGetReceipt(t *testing.T, b *backends.SimulatedBackend, tx *types.Transaction, err error) (*types.Receipt) {
     if err != nil {
         t.Errorf("Error calling bindings: %v", err)
+        return nil
     }
     b.Commit()
     ctx := context.Background()
@@ -58,5 +63,14 @@ func TestCreateTokenContract(t *testing.T) {
     r := commitAndGetReceipt(t, b, tx, err)
     if r != nil && r.Status != types.ReceiptStatusSuccessful {
         t.Errorf("Alice could not create token contract, tx failed")
+    }
+}
+
+func TestCreateHolderContract(t *testing.T) {
+    b, factory := mustDeployFactory(t)
+    tx, err := factory.CreateHolder(&bind.TransactOpts{From: bob.From, Signer: bob.Signer, Value: big.NewInt(0)}, bob.From)
+    r := commitAndGetReceipt(t, b, tx, err)
+    if r != nil && r.Status != types.ReceiptStatusSuccessful {
+        t.Errorf("Bob could not create holder contract, tx failed")
     }
 }
