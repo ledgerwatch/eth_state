@@ -15,13 +15,13 @@ agent
 ```
 ### Contributions
 We attempt to enumerate the most valuable and crucial contributions of the agents to the Ethereum system.
-```graphviz
+![Alt text](https://g.gravizo.com/svg?
 digraph contributions {
 agent;
 contribution [shape="doubleoctagon"];
 agent -> contribution;
 }
-```
+)
 ### Challenges
 Challenges (how critical they are, i.e. if the challenge is not met, will agents's contribution degrade or stop?) that agents face. Shown as octagons.
 ```graphviz
