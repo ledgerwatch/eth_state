@@ -10,6 +10,7 @@ Ethereum system itsef is an emergent entity, and only exists as long as its cruc
 Agents make contributions and thus, collectively, give rise to the Ethereum system. Their contributions also give the Etherum system its properties, such as resilience, efficiency, accessibility. Agents are shown as ellipses.
 ```graphviz
 digraph agents {
+rankdir=LR;
 agent
 }
 ```
@@ -17,15 +18,17 @@ agent
 We attempt to enumerate the most valuable and crucial contributions of the agents to the Ethereum system.
 ```graphviz
 digraph contributions {
+rankdir=LR;
 agent;
 contribution [shape="doubleoctagon"];
-agent -> contribution;
+contribution->agent [dir=back];
 }
 ```
 ### Challenges
 Challenges (how critical they are, i.e. if the challenge is not met, will agents's contribution degrade or stop?) that agents face. Shown as octagons.
 ```graphviz
 digraph challenges {
+rankdir=LR;
 challenge [shape="octagon"];
 agent;
 agent -> challenge;
@@ -35,20 +38,24 @@ agent -> challenge;
 We try to understand the main causes of each challenge. Where it adds to understanding, we talk about sub-causes
 ```graphviz
 digraph causes {
+rankdir=LR;
 cause [shape="hexagon"];
 sub_cause [label="sub-cause" shape="hexagon"];
 challenge [shape="octagon"];
-cause -> challenge;
-sub_cause -> cause;
+challenge -> cause [dir=back];
+cause -> sub_cause [dir=back];
 }
 ```
 ### Solutions
 Proposed solutions should be targeted at the causes but may have side-effects (some solutions may be causes for other challenges, though perhaps less critical than the ones they are trying to address)
 ```graphviz
 digraph solutions {
+rankdir=LR;
 solution [shape="box"];
 cause [shape="hexagon"];
-solution -> cause;
+challenge [shape="octagon"]
+cause -> solution [dir=back];
+challenge -> solution [dir=back style=dotted]
 }
 ```
 ## Agents
@@ -56,6 +63,7 @@ For the purpose of this document, we will consider a somewhat coarse-grained gro
 
 ```graphviz
 digraph agents {
+rankdir=LR;
 end_users [label="End users"];
 node_ops [label="Node operators"];
 dapp_devs [label="Dapp developers"];
@@ -68,6 +76,7 @@ End users generally contribute "usage" to the system. Some usage is directly ben
 End users are mostly concerned with lack of use cases, transactional cost of using Ethereum dapps or Ether currency, as well as the safety of their funds and data.
 ```graphviz
 digraph end_users {
+rankdir=LR;
 end_users [label="End users"];
 resources [label="Resources" shape="doubleoctagon"];
 usage [label="Usage" shape="doubleoctagon"];
@@ -88,7 +97,10 @@ Often users need to weight risk of exploit against the benefit they hope to get 
 Cost of operating a full node is rising. Below are the main cost categories.
 ```graphviz
 digraph node_ops {
+rankdir=LR;
 node_ops [label="Node operators"];
+nodes [label="Network nodes" shape="doubleoctagon"];
+nodes -> node_ops;
 storage_devices [label="Costly high end storage devices" shape="octagon"];
 traffic [label="High internet traffic" shape="octagon"];
 dev_ops [label="Complex DevOps" shape="octagon"]
@@ -109,7 +121,10 @@ Dapp developers are mainly concerned with two issues: scalability and security. 
 These two issued can be thought of mirroring the issues facing the end users. Higher scalability correlates to the lower cost for users. Better security measures for smart contracts translate to easier risk assessment for the users.
 ```graphviz
 digraph dapp_devs {
+rankdir=LR;
 dapp_devs [label="Dapp developers"];
+use_cases [label="Use cases" shape="doubleoctagon"];
+use_cases -> dapp_devs;
 scalability [label="Scalability" shape="octagon"];
 security [label="Security" shape="octagon"];
 dapp_devs -> scalability;
@@ -127,7 +142,10 @@ Contribuion of core developers is in developing and maintaining the software tha
 Development of a fully functional Ethereum implementation which is capable of run on the mainnet is challenging.
 ```graphviz
 digraph core_devs {
+rankdir=LR;
 core_devs [label="Core developers"];
+software [label="Node software" shape="doubleoctagon"];
+software -> core_devs;
 new_implementations [label="New implementations" shape="octagon"];
 product_vs_system [label="Product vs System" shape="octagon"];
 backwards_compatibility [label="Backwards compatibility" shape="octagon"]
@@ -140,21 +158,23 @@ core_devs -> backwards_compatibility;
 It is difficult to create new indepdendent implementations (clients) that are capable of working with the main net. Lack of implementation diversity leads to core developers being "conservative" by default.
 ```graphviz
 digraph new_implementations {
+rankdir=LR;
 new_implementations [label="New implementations" shape="octagon"];
 data_management [label="Data management" shape="hexagon"];
 
-data_management -> new_implementations;
+new_implementations -> data_management [dir=back];
 }
 ```
 #### Data management (cause)
 The hardest part of a mainnet capable implementation seems to be data management. Ethereum node needs to transmit, process and store large amounts of data. To do so efficiently, it needs non-trivial techniques. Such techniques, however, are currently not considered in Ethereum specification documents or other literature.
 
-#### Growth of Ethereum state (sub-cause)
+#### Large state (sub-cause)
 ```graphviz
 digraph causes {
+rankdir=LR;
 data_management [label="Data management" shape="hexagon"];
-state_growth [label="State growth" shape="hexagon"]
-state_growth -> data_management
+large_state [label="Large state" shape="hexagon"];
+data_management -> large_state [dir=back];
 }
 ```
 
@@ -175,6 +195,7 @@ Both ways of development have their pros and cons. It seems that in the current 
 ## Entire diagram
 ```graphviz
 digraph agents {
+rankdir=LR;
 end_users [label="End users"];
 
 resources [label="Resources" shape="doubleoctagon"];
@@ -184,8 +205,12 @@ tx_cost [label="Cost of transactions" shape="octagon"];
 tx_safety [label="Risk assessment" shape="octagon"];
 {resources usage} -> end_users [dir="back"]
 end_users -> {tx_cost tx_safety no_usecases}
+fee_burn [label="Fee burn" shape="box"];
+tx_cost -> fee_burn [dir=back];
 
 node_ops [label="Node operators"];
+nodes [label="Network nodes" shape="doubleoctagon"];
+nodes -> node_ops;
 storage_devices [label="Costly high end storage devices" shape="octagon"];
 traffic [label="High internet traffic" shape="octagon"];
 dev_ops [label="Complex DevOps" shape="octagon"]
@@ -194,25 +219,43 @@ node_ops -> traffic;
 node_ops -> dev_ops;
 
 dapp_devs [label="Dapp developers"];
+use_cases [label="Use cases" shape="doubleoctagon"];
+use_cases -> dapp_devs;
 scalability [label="Scalability" shape="octagon"];
 security [label="Security" shape="octagon"];
 dapp_devs -> scalability;
 dapp_devs -> security;
 
 core_devs [label="Core developers"];
-
+software [label="Node software" shape="doubleoctagon"];
+software -> core_devs;
 new_implementations [label="New implementations" shape="octagon"];
 product_vs_system [label="Product vs System" shape="octagon"];
 backwards_compatibility [label="Backwards compatibility" shape="octagon"]
 core_devs -> {new_implementations product_vs_system backwards_compatibility};
 
 data_management [label="Data management" shape="hexagon"];
+dev_ops -> data_management [dir=back];
 new_implementations -> data_management [dir=back];
-state_growth [label="State growth" shape="hexagon"]
-data_management -> state_growth [dir=back];
+large_state [label="Large_state" shape="hexagon"]
+data_management -> large_state [dir=back];
+storage_devices -> large_state [dir=back];
 functional_coupling [label="Functional coupling" shape="hexagon"];
 backwards_compatibility -> functional_coupling [dir=back];
 spontaneous_vs_managed [label="Spontaneous vs managed" shape="hexagon"];
 product_vs_system -> spontaneous_vs_managed [dir=back];
+
+state_rent [label="State rent" shape="box"];
+large_state -> state_rent [dir=back];
+backwards_compatibility -> state_rent [dir=back style="dotted"];
+
+stateless [label="Stateless clients" shape="box"];
+data_management -> stateless [dir=back];
 }
 ```
+
+## TODOs
+- [ ] Add colours to different types of concepts, so that it is easier to see them.
+- [ ] Discuss and correct methodology, wording, and content (specically the challenges)
+- [ ] Levels of criticality for challenges, expressed by colours
+- [ ] Add remaining open projects to the solutions
