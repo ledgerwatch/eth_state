@@ -11,7 +11,7 @@ Agents make contributions and thus, collectively, give rise to the Ethereum syst
 ```graphviz
 digraph agents {
 rankdir=LR;
-agent
+agent [style=filled fillcolor=khaki]
 }
 ```
 ### Contributions
@@ -19,8 +19,8 @@ We attempt to enumerate the most valuable and crucial contributions of the agent
 ```graphviz
 digraph contributions {
 rankdir=LR;
-agent;
-contribution [shape="doubleoctagon"];
+agent [style=filled fillcolor=khaki];
+contribution [shape=doubleoctagon style=filled fillcolor=lawngreen];
 contribution->agent [dir=back];
 }
 ```
@@ -29,8 +29,8 @@ Challenges (how critical they are, i.e. if the challenge is not met, will agents
 ```graphviz
 digraph challenges {
 rankdir=LR;
-challenge [shape="octagon"];
-agent;
+challenge [shape=octagon style=filled fillcolor=plum];
+agent [style=filled fillcolor=khaki];
 agent -> challenge;
 }
 ```
@@ -39,9 +39,9 @@ We try to understand the main causes of each challenge. Where it adds to underst
 ```graphviz
 digraph causes {
 rankdir=LR;
-cause [shape="hexagon"];
-sub_cause [label="sub-cause" shape="hexagon"];
-challenge [shape="octagon"];
+cause [shape=hexagon style=filled fillcolor=salmon];
+sub_cause [label="sub-cause" shape=hexagon style=filled fillcolor=salmon];
+challenge [shape=octagon style=filled fillcolor=plum];
 challenge -> cause [dir=back];
 cause -> sub_cause [dir=back];
 }
@@ -51,9 +51,9 @@ Proposed solutions should be targeted at the causes but may have side-effects (s
 ```graphviz
 digraph solutions {
 rankdir=LR;
-solution [shape="box"];
-cause [shape="hexagon"];
-challenge [shape="octagon"]
+solution [shape=box style=filled fillcolor=lightblue];
+cause [shape=hexagon style=filled fillcolor=salmon];
+challenge [shape=octagon style=filled fillcolor=plum]
 cause -> solution [dir=back];
 challenge -> solution [dir=back style=dotted]
 }
@@ -64,10 +64,11 @@ For the purpose of this document, we will consider a somewhat coarse-grained gro
 ```graphviz
 digraph agents {
 rankdir=LR;
-end_users [label="End users"];
-node_ops [label="Node operators"];
-dapp_devs [label="Dapp developers"];
-core_devs [label="Core developers"];
+end_users [label="End users" style=filled fillcolor=khaki];
+node_ops [label="Node operators" style=filled fillcolor=khaki];
+miners [label="Miners" style=filled fillcolor=khaki];
+dapp_devs [label="Dapp developers" style=filled fillcolor=khaki];
+core_devs [label="Core developers" style=filled fillcolor=khaki];
 }
 ```
 Each agent type makes certain contributions to the wellfare of the Ethereum system, and, in turn faces challenges. If these challenges become too great, then the contribution reduces or stops, and the Ethereum system suffers or potentially ceases to exist.
@@ -77,18 +78,16 @@ End users are mostly concerned with lack of use cases, transactional cost of usi
 ```graphviz
 digraph end_users {
 rankdir=LR;
-end_users [label="End users"];
-resources [label="Resources" shape="doubleoctagon"];
-usage [label="Usage" shape="doubleoctagon"];
-no_usecases [label="Lack of use cases" shape="octagon"];
-tx_cost [label="Cost of transactions" shape="octagon"];
-tx_safety [label="Risk assessment" shape="octagon"];
+end_users [label="End users" style=filled fillcolor=khaki];
+resources [label="Resources" shape=doubleoctagon style=filled fillcolor=lawngreen];
+usage [label="Usage" shape=doubleoctagon style=filled fillcolor=lawngreen];
+no_usecases [label="Lack of use cases" shape=octagon style=filled fillcolor=plum];
+tx_cost [label="Cost of transactions" shape=octagon style=filled fillcolor=plum];
+tx_safety [label="Risk assessment" shape=octagon style=filled fillcolor=plum];
 {resources usage} -> end_users [dir="back"]
 end_users -> {tx_cost tx_safety no_usecases}
 }
 ```
-### Lack of use cases (challenge)
-We assume that there are users that would have interacted with the Ethereum system (and contribute to it) if there were use cases for them. Such use cases need to be discovered and tried for the users to keep contributing.
 ### Cost of transactions (challenge)
 By cost of transactions for the end user we normally understand the gas cost of those transactions multiplied by the current cost of gas. Users may often overpay for gas because they cannot reliably predict which gas price level will ensure the inclusion of their transactions with required urgency.
 ### Risk assessment (challenge)
@@ -98,12 +97,12 @@ Cost of operating a full node is rising. Below are the main cost categories.
 ```graphviz
 digraph node_ops {
 rankdir=LR;
-node_ops [label="Node operators"];
-nodes [label="Network nodes" shape="doubleoctagon"];
+node_ops [label="Node operators" style=filled fillcolor=khaki];
+nodes [label="Network nodes" shape=doubleoctagon style=filled fillcolor=lawngreen];
 nodes -> node_ops;
-storage_devices [label="Costly high end storage devices" shape="octagon"];
-traffic [label="High internet traffic" shape="octagon"];
-dev_ops [label="Complex DevOps" shape="octagon"]
+storage_devices [label="Costly high end storage devices" shape=octagon style=filled fillcolor=plum];
+traffic [label="High internet traffic" shape=octagon style=filled fillcolor=plum];
+dev_ops [label="Complex DevOps" shape=octagon style=filled fillcolor=plum]
 node_ops -> storage_devices;
 node_ops -> traffic;
 node_ops -> dev_ops;
@@ -122,11 +121,11 @@ These two issued can be thought of mirroring the issues facing the end users. Hi
 ```graphviz
 digraph dapp_devs {
 rankdir=LR;
-dapp_devs [label="Dapp developers"];
-use_cases [label="Use cases" shape="doubleoctagon"];
+dapp_devs [label="Dapp developers" style=filled fillcolor=khaki];
+use_cases [label="Use cases" shape=doubleoctagon style=filled fillcolor=lawngreen];
 use_cases -> dapp_devs;
-scalability [label="Scalability" shape="octagon"];
-security [label="Security" shape="octagon"];
+scalability [label="Scalability" shape=octagon style=filled fillcolor=plum];
+security [label="Security" shape=octagon style=filled fillcolor=plum];
 dapp_devs -> scalability;
 dapp_devs -> security;
 }
@@ -143,12 +142,12 @@ Development of a fully functional Ethereum implementation which is capable of ru
 ```graphviz
 digraph core_devs {
 rankdir=LR;
-core_devs [label="Core developers"];
-software [label="Node software" shape="doubleoctagon"];
+core_devs [label="Core developers" style=filled fillcolor=khaki];
+software [label="Node software" shape=doubleoctagon style=filled fillcolor=lawngreen];
 software -> core_devs;
-new_implementations [label="New implementations" shape="octagon"];
-product_vs_system [label="Product vs System" shape="octagon"];
-backwards_compatibility [label="Backwards compatibility" shape="octagon"]
+new_implementations [label="New implementations" shape=octagon style=filled fillcolor=plum];
+product_vs_system [label="Product vs System" shape=octagon style=filled fillcolor=plum];
+backwards_compatibility [label="Backwards compatibility" shape=octagon style=filled fillcolor=plum]
 core_devs -> new_implementations;
 core_devs -> product_vs_system;
 core_devs -> backwards_compatibility;
@@ -159,8 +158,8 @@ It is difficult to create new indepdendent implementations (clients) that are ca
 ```graphviz
 digraph new_implementations {
 rankdir=LR;
-new_implementations [label="New implementations" shape="octagon"];
-data_management [label="Data management" shape="hexagon"];
+new_implementations [label="New implementations" shape=octagon style=filled fillcolor=plum];
+data_management [label="Data management" shape=hexagon style=filled fillcolor=salmon];
 
 new_implementations -> data_management [dir=back];
 }
@@ -172,8 +171,8 @@ The hardest part of a mainnet capable implementation seems to be data management
 ```graphviz
 digraph causes {
 rankdir=LR;
-data_management [label="Data management" shape="hexagon"];
-large_state [label="Large state" shape="hexagon"];
+data_management [label="Data management" shape=hexagon style=filled fillcolor=salmon];
+large_state [label="Large state" shape=hexagon style=filled fillcolor=salmon];
 data_management -> large_state [dir=back];
 }
 ```
@@ -196,73 +195,78 @@ Both ways of development have their pros and cons. It seems that in the current 
 ```graphviz
 digraph agents {
 rankdir=LR;
-end_users [label="End users" href="#End-users-agent"];
+end_users [label="End users" href="#End-users-agent" style=filled fillcolor=khaki];
 
-resources [label="Resources" shape="doubleoctagon"];
-usage [label="Usage" shape="doubleoctagon"];
-no_usecases [label="Lack of use cases" shape="octagon"];
-tx_cost [label="Cost of transactions" shape="octagon"];
-tx_safety [label="Risk assessment" shape="octagon"];
+resources [label="Resources" shape=doubleoctagon style=filled fillcolor=lawngreen];
+usage [label="Usage" shape=doubleoctagon style=filled fillcolor=lawngreen];
+tx_cost [label="Cost of transactions" shape=octagon style=filled fillcolor=plum];
+tx_safety [label="Risk assessment" shape=octagon style=filled fillcolor=plum];
 {resources usage} -> end_users [dir="back"]
-end_users -> {tx_cost tx_safety no_usecases}
-fee_burn [label="Fee burn" shape="box"];
-tx_cost -> fee_burn [dir=back];
-finality_gadget [label="Finality gadget" shape="box"];
-tx_safety -> finality_gadget [dir=back];
-progpow [label="ProgPOW" shape="box"];
-tx_safety -> progpow [dir=back];
+end_users -> {tx_cost tx_safety}
 
-node_ops [label="Node operators"];
-nodes [label="Network nodes" shape="doubleoctagon"];
+gas_limit [label="Block gas limit" shape=hexagon style=filled fillcolor=salmon];
+tx_cost -> gas_limit [dir=back];
+fee_market [label="Fee market" shape=hexagon style=filled fillcolor=salmon];
+tx_cost -> fee_market [dir=back];
+
+fee_burn [label="Fee burn" shape=box style=filled fillcolor=lightblue];
+fee_market -> fee_burn [dir=back];
+
+reorgs [label="Long reorgs" shape=hexagon style=filled fillcolor=salmon]
+tx_safety -> reorgs [dir=back];
+finality_gadget [label="Finality gadget" shape=box style=filled fillcolor=lightblue];
+reorgs -> finality_gadget [dir=back];
+
+node_ops [label="Node operators" style=filled fillcolor=khaki];
+nodes [label="Network nodes" shape=doubleoctagon style=filled fillcolor=lawngreen];
 nodes -> node_ops;
-storage_devices [label="Cost of storage devices" shape="octagon"];
-traffic [label="High internet traffic" shape="octagon"];
-dev_ops [label="Complex DevOps" shape="octagon"];
-sync_time [label="Sync time" shape="octagon"];
+storage_devices [label="Cost of storage devices" shape=octagon style=filled fillcolor=plum];
+traffic [label="High internet traffic" shape=octagon style=filled fillcolor=plum];
+dev_ops [label="Complex DevOps" shape=octagon style=filled fillcolor=plum];
+sync_time [label="Sync time" shape=octagon style=filled fillcolor=plum];
 node_ops -> {storage_devices traffic dev_ops sync_time}
 
-miners [label="Miners"];
-chain_security [label="Chain security" shape="doubleoctagon"];
+miners [label="Miners" style=filled fillcolor=khaki];
+chain_security [label="Chain security" shape=doubleoctagon style=filled fillcolor=lawngreen];
 chain_security -> miners;
 
-dapp_devs [label="Dapp developers"];
-use_cases [label="Use cases" shape="doubleoctagon"];
+dapp_devs [label="Dapp developers" style=filled fillcolor=khaki];
+use_cases [label="Use cases" shape=doubleoctagon style=filled fillcolor=lawngreen];
 use_cases -> dapp_devs;
-scalability [label="Scalability" shape="octagon"];
-security [label="Security" shape="octagon"];
+scalability [label="Scalability" shape=octagon style=filled fillcolor=plum];
+security [label="Security" shape=octagon style=filled fillcolor=plum];
 dapp_devs -> scalability;
 dapp_devs -> security;
 
-core_devs [label="Core developers"];
-software [label="Node software" shape="doubleoctagon"];
+core_devs [label="Core developers" style=filled fillcolor=khaki];
+software [label="Node software" shape=doubleoctagon style=filled fillcolor=lawngreen];
 software -> core_devs;
-new_implementations [label="New implementations" shape="octagon"];
-product_vs_system [label="Product vs System" shape="octagon"];
-backwards_compatibility [label="Backwards compatibility" shape="octagon"]
+new_implementations [label="New implementations" shape=octagon style=filled fillcolor=plum];
+product_vs_system [label="Product vs System" shape=octagon style=filled fillcolor=plum];
+backwards_compatibility [label="Backwards compatibility" shape=octagon style=filled fillcolor=plum]
 core_devs -> {new_implementations product_vs_system backwards_compatibility};
 
-data_management [label="Data management" shape="hexagon"];
+data_management [label="Data management" shape=hexagon style=filled fillcolor=salmon];
 dev_ops -> data_management [dir=back];
 new_implementations -> data_management [dir=back];
-large_state [label="Large_state" shape="hexagon"]
+large_state [label="Large_state" shape=hexagon style=filled fillcolor=salmon];
 data_management -> large_state [dir=back];
 storage_devices -> large_state [dir=back];
-functional_coupling [label="Functional coupling" shape="hexagon"];
+functional_coupling [label="Functional coupling" shape=hexagon style=filled fillcolor=salmon];
 backwards_compatibility -> functional_coupling [dir=back];
-spontaneous_vs_managed [label="Spontaneous vs managed" shape="hexagon"];
+spontaneous_vs_managed [label="Spontaneous vs managed" shape=hexagon style=filled fillcolor=salmon];
 product_vs_system -> spontaneous_vs_managed [dir=back];
 
-state_rent [label="State rent" shape="box"];
+state_rent [label="State rent" shape=box style=filled fillcolor=lightblue];
 large_state -> state_rent [dir=back];
 backwards_compatibility -> state_rent [dir=back style="dotted"];
 
-stateless [label="Stateless clients" shape="box"];
+stateless [label="Stateless clients" shape=box style=filled fillcolor=lightblue];
 data_management -> stateless [dir=back];
 }
 ```
 
 ## TODOs
-- [ ] Add colours to different types of concepts, so that it is easier to see them.
 - [ ] Discuss and correct methodology, wording, and content (specically the challenges)
-- [ ] Levels of criticality for challenges, expressed by colours
+- [ ] Levels of criticality for challenges, perhaps expressed by colours
 - [ ] Add remaining open projects to the solutions
