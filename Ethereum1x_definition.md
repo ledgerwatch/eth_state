@@ -196,7 +196,7 @@ Both ways of development have their pros and cons. It seems that in the current 
 ```graphviz
 digraph agents {
 rankdir=LR;
-end_users [label="End users"];
+end_users [label="End users" href="#End-users-agent"];
 
 resources [label="Resources" shape="doubleoctagon"];
 usage [label="Usage" shape="doubleoctagon"];
@@ -207,16 +207,23 @@ tx_safety [label="Risk assessment" shape="octagon"];
 end_users -> {tx_cost tx_safety no_usecases}
 fee_burn [label="Fee burn" shape="box"];
 tx_cost -> fee_burn [dir=back];
+finality_gadget [label="Finality gadget" shape="box"];
+tx_safety -> finality_gadget [dir=back];
+progpow [label="ProgPOW" shape="box"];
+tx_safety -> progpow [dir=back];
 
 node_ops [label="Node operators"];
 nodes [label="Network nodes" shape="doubleoctagon"];
 nodes -> node_ops;
-storage_devices [label="Costly high end storage devices" shape="octagon"];
+storage_devices [label="Cost of storage devices" shape="octagon"];
 traffic [label="High internet traffic" shape="octagon"];
-dev_ops [label="Complex DevOps" shape="octagon"]
-node_ops -> storage_devices;
-node_ops -> traffic;
-node_ops -> dev_ops;
+dev_ops [label="Complex DevOps" shape="octagon"];
+sync_time [label="Sync time" shape="octagon"];
+node_ops -> {storage_devices traffic dev_ops sync_time}
+
+miners [label="Miners"];
+chain_security [label="Chain security" shape="doubleoctagon"];
+chain_security -> miners;
 
 dapp_devs [label="Dapp developers"];
 use_cases [label="Use cases" shape="doubleoctagon"];
