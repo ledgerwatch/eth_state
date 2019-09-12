@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Ethereum 1x Definition - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @charset "UTF-8";@import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;padding:0 15px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-published-note{color:#337ab7}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true" style="position: relative;"><h1 id="Ethereum-1x-Definition"><a class="anchor hidden-xs" href="#Ethereum-1x-Definition" title="Ethereum-1x-Definition"><span class="octicon octicon-link"></span></a>Ethereum 1x Definition</h1><h2 id="Objective"><a class="anchor hidden-xs" href="#Objective" title="Objective"><span class="octicon octicon-link"></span></a>Objective</h2><p>This document aims to define and describe the Ethereum 1x initiative, with a primary goal of being used as a guide for funding and other support that various improvement proposals and projects should receive under the auspices of Ethereum 1x.</p><h2 id="Methodology-and-terminology"><a class="anchor hidden-xs" href="#Methodology-and-terminology" title="Methodology-and-terminology"><span class="octicon octicon-link"></span></a>Methodology and terminology</h2><p>For the purpose of this analysis, we view Ethereum as a set of interacting agents. Their interaction is described by the concepts of contributions and challenges.<br>
+Ethereum system itsef is an emergent entity, and only exists as long as its crucial actors keep making their contributions. The goal of the Ethereum 1x as an initiative, is to preserse and improve the “wellfare” of this emergent entity, rather than any agents specifically.</p><h3 id="Agents0"><a class="anchor hidden-xs" href="#Agents0" title="Agents0"><span class="octicon octicon-link"></span></a>Agents</h3><p>Agents make contributions and thus, collectively, give rise to the Ethereum system. Their contributions also give the Etherum system its properties, such as resilience, efficiency, accessibility. Agents are shown as ellipses.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: agents Pages: 1 -->
+<svg width="72pt" height="44pt" viewBox="0.00 0.00 71.90 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>agents</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-40 67.9011,-40 67.9011,4 -4,4"></polygon>
+<!-- agent -->
+<g id="node1" class="node">
+<title>agent</title>
+<ellipse fill="none" stroke="#000000" cx="31.9506" cy="-18" rx="31.9012" ry="18"></ellipse>
+<text text-anchor="middle" x="31.9506" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">agent</text>
+</g>
+</g>
+</svg>
+</pre><h3 id="Contributions"><a class="anchor hidden-xs" href="#Contributions" title="Contributions"><span class="octicon octicon-link"></span></a>Contributions</h3><p>We attempt to enumerate the most valuable and crucial contributions of the agents to the Ethereum system.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: contributions Pages: 1 -->
+<svg width="242pt" height="52pt" viewBox="0.00 0.00 241.99 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 48)">
+<title>contributions</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-48 237.9858,-48 237.9858,4 -4,4"></polygon>
+<!-- agent -->
+<g id="node1" class="node">
+<title>agent</title>
+<ellipse fill="none" stroke="#000000" cx="202.0352" cy="-22" rx="31.9012" ry="18"></ellipse>
+<text text-anchor="middle" x="202.0352" y="-17.8" font-family="Times,serif" font-size="14.00" fill="#000000">agent</text>
+</g>
+<!-- contribution -->
+<g id="node2" class="node">
+<title>contribution</title>
+<polygon fill="none" stroke="#000000" points="130.1245,-14.5442 130.1245,-29.4558 93.1718,-40 40.9128,-40 3.9602,-29.4558 3.9602,-14.5442 40.9128,-4 93.1718,-4 130.1245,-14.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="134.127,-11.5264 134.127,-32.4736 93.732,-44 40.3526,-44 -.0424,-32.4736 -.0424,-11.5264 40.3526,0 93.732,0 134.127,-11.5264"></polygon>
+<text text-anchor="middle" x="67.0423" y="-17.8" font-family="Times,serif" font-size="14.00" fill="#000000">contribution</text>
+</g>
+<!-- contribution&#45;&gt;agent -->
+<g id="edge1" class="edge">
+<title>contribution-&gt;agent</title>
+<path fill="none" stroke="#000000" d="M144.3175,-22C153.2714,-22 161.9907,-22 169.827,-22"></path>
+<polygon fill="#000000" stroke="#000000" points="144.1433,-18.5001 134.1433,-22 144.1432,-25.5001 144.1433,-18.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h3 id="Challenges"><a class="anchor hidden-xs" href="#Challenges" title="Challenges"><span class="octicon octicon-link"></span></a>Challenges</h3><p>Challenges (how critical they are, i.e. if the challenge is not met, will agents’s contribution degrade or stop?) that agents face. Shown as octagons.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: challenges Pages: 1 -->
+<svg width="212pt" height="44pt" viewBox="0.00 0.00 211.89 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>challenges</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-40 207.889,-40 207.889,4 -4,4"></polygon>
+<!-- challenge -->
+<g id="node1" class="node">
+<title>challenge</title>
+<polygon fill="none" stroke="#000000" points="203.8829,-10.5442 203.8829,-25.4558 173.4291,-36 130.361,-36 99.9072,-25.4558 99.9072,-10.5442 130.361,0 173.4291,0 203.8829,-10.5442"></polygon>
+<text text-anchor="middle" x="151.895" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">challenge</text>
+</g>
+<!-- agent -->
+<g id="node2" class="node">
+<title>agent</title>
+<ellipse fill="none" stroke="#000000" cx="31.9506" cy="-18" rx="31.9012" ry="18"></ellipse>
+<text text-anchor="middle" x="31.9506" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">agent</text>
+</g>
+<!-- agent&#45;&gt;challenge -->
+<g id="edge1" class="edge">
+<title>agent-&gt;challenge</title>
+<path fill="none" stroke="#000000" d="M64.0935,-18C72.0595,-18 80.8673,-18 89.7389,-18"></path>
+<polygon fill="#000000" stroke="#000000" points="89.7409,-21.5001 99.7408,-18 89.7408,-14.5001 89.7409,-21.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h3 id="Causes"><a class="anchor hidden-xs" href="#Causes" title="Causes"><span class="octicon octicon-link"></span></a>Causes</h3><p>We try to understand the main causes of each challenge. Where it adds to understanding, we talk about sub-causes</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: causes Pages: 1 -->
+<svg width="372pt" height="44pt" viewBox="0.00 0.00 372.41 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>causes</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-40 368.409,-40 368.409,4 -4,4"></polygon>
+<!-- cause -->
+<g id="node1" class="node">
+<title>cause</title>
+<polygon fill="none" stroke="#000000" points="215.0044,-18 196.2489,-36 158.7379,-36 139.9824,-18 158.7379,0 196.2489,0 215.0044,-18"></polygon>
+<text text-anchor="middle" x="177.4934" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">cause</text>
+</g>
+<!-- sub_cause -->
+<g id="node2" class="node">
+<title>sub_cause</title>
+<polygon fill="none" stroke="#000000" points="364.6149,-18 336.1594,-36 279.2485,-36 250.793,-18 279.2485,0 336.1594,0 364.6149,-18"></polygon>
+<text text-anchor="middle" x="307.704" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">sub-cause</text>
+</g>
+<!-- cause&#45;&gt;sub_cause -->
+<g id="edge2" class="edge">
+<title>cause-&gt;sub_cause</title>
+<path fill="none" stroke="#000000" d="M225.3574,-18C233.6146,-18 242.2705,-18 250.7397,-18"></path>
+<polygon fill="#000000" stroke="#000000" points="225.1557,-14.5001 215.1557,-18 225.1556,-21.5001 225.1557,-14.5001"></polygon>
+</g>
+<!-- challenge -->
+<g id="node3" class="node">
+<title>challenge</title>
+<polygon fill="none" stroke="#000000" points="103.9818,-10.5442 103.9818,-25.4558 73.528,-36 30.4599,-36 .0061,-25.4558 .0061,-10.5442 30.4599,0 73.528,0 103.9818,-10.5442"></polygon>
+<text text-anchor="middle" x="51.9939" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">challenge</text>
+</g>
+<!-- challenge&#45;&gt;cause -->
+<g id="edge1" class="edge">
+<title>challenge-&gt;cause</title>
+<path fill="none" stroke="#000000" d="M114.327,-18C123.0548,-18 131.7934,-18 139.8673,-18"></path>
+<polygon fill="#000000" stroke="#000000" points="114.1267,-14.5001 104.1267,-18 114.1267,-21.5001 114.1267,-14.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h3 id="Solutions"><a class="anchor hidden-xs" href="#Solutions" title="Solutions"><span class="octicon octicon-link"></span></a>Solutions</h3><p>Proposed solutions should be targeted at the causes but may have side-effects (some solutions may be causes for other challenges, though perhaps less critical than the ones they are trying to address)</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: solutions Pages: 1 -->
+<svg width="209pt" height="98pt" viewBox="0.00 0.00 209.10 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
+<title>solutions</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-94 205.1043,-94 205.1043,4 -4,4"></polygon>
+<!-- solution -->
+<g id="node1" class="node">
+<title>solution</title>
+<polygon fill="none" stroke="#000000" points="201.1626,-63 139.9295,-63 139.9295,-27 201.1626,-27 201.1626,-63"></polygon>
+<text text-anchor="middle" x="170.5461" y="-40.8" font-family="Times,serif" font-size="14.00" fill="#000000">solution</text>
+</g>
+<!-- cause -->
+<g id="node2" class="node">
+<title>cause</title>
+<polygon fill="none" stroke="#000000" points="89.5049,-72 70.7494,-90 33.2384,-90 14.4829,-72 33.2384,-54 70.7494,-54 89.5049,-72"></polygon>
+<text text-anchor="middle" x="51.9939" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">cause</text>
+</g>
+<!-- cause&#45;&gt;solution -->
+<g id="edge1" class="edge">
+<title>cause-&gt;solution</title>
+<path fill="none" stroke="#000000" d="M92.3707,-62.8043C107.8536,-59.2781 125.2578,-55.3143 139.7074,-52.0234"></path>
+<polygon fill="#000000" stroke="#000000" points="91.4971,-59.4135 82.524,-65.0468 93.0516,-66.2388 91.4971,-59.4135"></polygon>
+</g>
+<!-- challenge -->
+<g id="node3" class="node">
+<title>challenge</title>
+<polygon fill="none" stroke="#000000" points="103.9818,-10.5442 103.9818,-25.4558 73.528,-36 30.4599,-36 .0061,-25.4558 .0061,-10.5442 30.4599,0 73.528,0 103.9818,-10.5442"></polygon>
+<text text-anchor="middle" x="51.9939" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">challenge</text>
+</g>
+<!-- challenge&#45;&gt;solution -->
+<g id="edge2" class="edge">
+<title>challenge-&gt;solution</title>
+<path fill="none" stroke="#000000" stroke-dasharray="1,5" d="M106.4497,-30.4022C117.9201,-33.0146 129.6328,-35.6821 139.8545,-38.0101"></path>
+<polygon fill="#000000" stroke="#000000" points="107.0032,-26.9387 96.4757,-28.1306 105.4487,-33.7639 107.0032,-26.9387"></polygon>
+</g>
+</g>
+</svg>
+</pre><h2 id="Agents"><a class="anchor hidden-xs" href="#Agents" title="Agents"><span class="octicon octicon-link"></span></a>Agents</h2><p>For the purpose of this document, we will consider a somewhat coarse-grained grouping of Ethereum agents. In the later revisions of the document, the grouping can be expanded or made more fine-grained.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: agents Pages: 1 -->
+<svg width="160pt" height="206pt" viewBox="0.00 0.00 160.39 206.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 202)">
+<title>agents</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-202 156.3877,-202 156.3877,4 -4,4"></polygon>
+<!-- end_users -->
+<g id="node1" class="node">
+<title>end_users</title>
+<ellipse fill="none" stroke="#000000" cx="76.1938" cy="-18" rx="48.697" ry="18"></ellipse>
+<text text-anchor="middle" x="76.1938" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">End users</text>
+</g>
+<!-- node_ops -->
+<g id="node2" class="node">
+<title>node_ops</title>
+<ellipse fill="none" stroke="#000000" cx="76.1938" cy="-72" rx="70.0875" ry="18"></ellipse>
+<text text-anchor="middle" x="76.1938" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Node operators</text>
+</g>
+<!-- dapp_devs -->
+<g id="node3" class="node">
+<title>dapp_devs</title>
+<ellipse fill="none" stroke="#000000" cx="76.1938" cy="-126" rx="76.3882" ry="18"></ellipse>
+<text text-anchor="middle" x="76.1938" y="-121.8" font-family="Times,serif" font-size="14.00" fill="#000000">Dapp developers</text>
+</g>
+<!-- core_devs -->
+<g id="node4" class="node">
+<title>core_devs</title>
+<ellipse fill="none" stroke="#000000" cx="76.1938" cy="-180" rx="74.0981" ry="18"></ellipse>
+<text text-anchor="middle" x="76.1938" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">Core developers</text>
+</g>
+</g>
+</svg>
+</pre><p>Each agent type makes certain contributions to the wellfare of the Ethereum system, and, in turn faces challenges. If these challenges become too great, then the contribution reduces or stops, and the Ethereum system suffers or potentially ceases to exist.</p><h2 id="End-users-agent"><a class="anchor hidden-xs" href="#End-users-agent" title="End-users-agent"><span class="octicon octicon-link"></span></a>End users (agent)</h2><p>End users generally contribute “usage” to the system. Some usage is directly beneficial, as it brings more resources into the system (for example, purchasing Ether), some - only indirectly (intense usage attract more users).<br>
+End users are mostly concerned with lack of use cases, transactional cost of using Ethereum dapps or Ether currency, as well as the safety of their funds and data.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: end_users Pages: 1 -->
+<svg width="485pt" height="152pt" viewBox="0.00 0.00 485.43 152.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148)">
+<title>end_users</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-148 481.4294,-148 481.4294,4 -4,4"></polygon>
+<!-- end_users -->
+<g id="node1" class="node">
+<title>end_users</title>
+<ellipse fill="none" stroke="#000000" cx="202.6457" cy="-72" rx="48.697" ry="18"></ellipse>
+<text text-anchor="middle" x="202.6457" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">End users</text>
+</g>
+<!-- no_usecases -->
+<g id="node4" class="node">
+<title>no_usecases</title>
+<polygon fill="none" stroke="#000000" points="467.6896,-118.5442 467.6896,-133.4558 417.7642,-144 347.1591,-144 297.2337,-133.4558 297.2337,-118.5442 347.1591,-108 417.7642,-108 467.6896,-118.5442"></polygon>
+<text text-anchor="middle" x="382.4617" y="-121.8" font-family="Times,serif" font-size="14.00" fill="#000000">Lack of use cases</text>
+</g>
+<!-- end_users&#45;&gt;no_usecases -->
+<g id="edge3" class="edge">
+<title>end_users-&gt;no_usecases</title>
+<path fill="none" stroke="#000000" d="M239.3208,-83.9447C254.235,-88.7305 271.6562,-94.2299 287.494,-99 298.0493,-102.1791 309.2948,-105.4649 320.2175,-108.6031"></path>
+<polygon fill="#000000" stroke="#000000" points="319.5519,-112.053 330.1288,-111.4364 321.476,-105.3226 319.5519,-112.053"></polygon>
+</g>
+<!-- tx_cost -->
+<g id="node5" class="node">
+<title>tx_cost</title>
+<polygon fill="none" stroke="#000000" points="477.3971,-64.5442 477.3971,-79.4558 421.7852,-90 343.1381,-90 287.5262,-79.4558 287.5262,-64.5442 343.1381,-54 421.7852,-54 477.3971,-64.5442"></polygon>
+<text text-anchor="middle" x="382.4617" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Cost of transactions</text>
+</g>
+<!-- end_users&#45;&gt;tx_cost -->
+<g id="edge4" class="edge">
+<title>end_users-&gt;tx_cost</title>
+<path fill="none" stroke="#000000" d="M251.7812,-72C259.8652,-72 268.5071,-72 277.3512,-72"></path>
+<polygon fill="#000000" stroke="#000000" points="277.4034,-75.5001 287.4034,-72 277.4033,-68.5001 277.4034,-75.5001"></polygon>
+</g>
+<!-- tx_safety -->
+<g id="node6" class="node">
+<title>tx_safety</title>
+<polygon fill="none" stroke="#000000" points="462.7978,-10.5442 462.7978,-25.4558 415.738,-36 349.1854,-36 302.1256,-25.4558 302.1256,-10.5442 349.1854,0 415.738,0 462.7978,-10.5442"></polygon>
+<text text-anchor="middle" x="382.4617" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Risk assessment</text>
+</g>
+<!-- end_users&#45;&gt;tx_safety -->
+<g id="edge5" class="edge">
+<title>end_users-&gt;tx_safety</title>
+<path fill="none" stroke="#000000" d="M239.3208,-60.0553C254.235,-55.2695 271.6562,-49.7701 287.494,-45 298.5378,-41.6738 310.3372,-38.2307 321.732,-34.9621"></path>
+<polygon fill="#000000" stroke="#000000" points="322.9569,-38.2523 331.6122,-32.1419 321.0355,-31.5212 322.9569,-38.2523"></polygon>
+</g>
+<!-- resources -->
+<g id="node2" class="node">
+<title>resources</title>
+<polygon fill="none" stroke="#000000" points="113.7032,-95.5442 113.7032,-110.4558 81.5995,-121 36.198,-121 4.0943,-110.4558 4.0943,-95.5442 36.198,-85 81.5995,-85 113.7032,-95.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="117.6963,-92.6461 117.6963,-113.3539 82.2374,-125 35.56,-125 .1011,-113.3539 .1011,-92.6461 35.56,-81 82.2374,-81 117.6963,-92.6461"></polygon>
+<text text-anchor="middle" x="58.8987" y="-98.8" font-family="Times,serif" font-size="14.00" fill="#000000">Resources</text>
+</g>
+<!-- resources&#45;&gt;end_users -->
+<g id="edge1" class="edge">
+<title>resources-&gt;end_users</title>
+<path fill="none" stroke="#000000" d="M123.5136,-89.0654C135.9221,-86.3894 148.6221,-83.6505 160.114,-81.1723"></path>
+<polygon fill="#000000" stroke="#000000" points="122.6908,-85.6623 113.6533,-91.1918 124.1665,-92.505 122.6908,-85.6623"></polygon>
+</g>
+<!-- usage -->
+<g id="node3" class="node">
+<title>usage</title>
+<polygon fill="none" stroke="#000000" points="97.0182,-33.5442 97.0182,-48.4558 74.6883,-59 43.1091,-59 20.7792,-48.4558 20.7792,-33.5442 43.1091,-23 74.6883,-23 97.0182,-33.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="101.0242,-31.011 101.0242,-50.989 75.5878,-63 42.2096,-63 16.7732,-50.989 16.7732,-31.011 42.2096,-19 75.5878,-19 101.0242,-31.011"></polygon>
+<text text-anchor="middle" x="58.8987" y="-36.8" font-family="Times,serif" font-size="14.00" fill="#000000">Usage</text>
+</g>
+<!-- usage&#45;&gt;end_users -->
+<g id="edge2" class="edge">
+<title>usage-&gt;end_users</title>
+<path fill="none" stroke="#000000" d="M111.0646,-52.2499C127.1762,-55.7245 144.7197,-59.5079 160.1003,-62.8248"></path>
+<polygon fill="#000000" stroke="#000000" points="111.7632,-48.8202 101.2501,-50.1334 110.2875,-55.6629 111.7632,-48.8202"></polygon>
+</g>
+</g>
+</svg>
+</pre><h3 id="Lack-of-use-cases-challenge"><a class="anchor hidden-xs" href="#Lack-of-use-cases-challenge" title="Lack-of-use-cases-challenge"><span class="octicon octicon-link"></span></a>Lack of use cases (challenge)</h3><p>We assume that there are users that would have interacted with the Ethereum system (and contribute to it) if there were use cases for them. Such use cases need to be discovered and tried for the users to keep contributing.</p><h3 id="Cost-of-transactions-challenge"><a class="anchor hidden-xs" href="#Cost-of-transactions-challenge" title="Cost-of-transactions-challenge"><span class="octicon octicon-link"></span></a>Cost of transactions (challenge)</h3><p>By cost of transactions for the end user we normally understand the gas cost of those transactions multiplied by the current cost of gas. Users may often overpay for gas because they cannot reliably predict which gas price level will ensure the inclusion of their transactions with required urgency.</p><h3 id="Risk-assessment-challenge"><a class="anchor hidden-xs" href="#Risk-assessment-challenge" title="Risk-assessment-challenge"><span class="octicon octicon-link"></span></a>Risk assessment (challenge)</h3><p>Often users need to weight risk of exploit against the benefit they hope to get from the transaction. Initial design of Ethereum did not put a lot of emphasys on making that risk assessment easier.</p><h2 id="Node-operators-agent"><a class="anchor hidden-xs" href="#Node-operators-agent" title="Node-operators-agent"><span class="octicon octicon-link"></span></a>Node operators (agent)</h2><p>Cost of operating a full node is rising. Below are the main cost categories.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: node_ops Pages: 1 -->
+<svg width="669pt" height="152pt" viewBox="0.00 0.00 669.40 152.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148)">
+<title>node_ops</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-148 665.4027,-148 665.4027,4 -4,4"></polygon>
+<!-- node_ops -->
+<g id="node1" class="node">
+<title>node_ops</title>
+<ellipse fill="none" stroke="#000000" cx="265.3159" cy="-72" rx="70.0875" ry="18"></ellipse>
+<text text-anchor="middle" x="265.3159" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Node operators</text>
+</g>
+<!-- storage_devices -->
+<g id="node3" class="node">
+<title>storage_devices</title>
+<polygon fill="none" stroke="#000000" points="661.2994,-118.5442 661.2994,-133.4558 576.4814,-144 456.5306,-144 371.7127,-133.4558 371.7127,-118.5442 456.5306,-108 576.4814,-108 661.2994,-118.5442"></polygon>
+<text text-anchor="middle" x="516.506" y="-121.8" font-family="Times,serif" font-size="14.00" fill="#000000">Costly high end storage devices</text>
+</g>
+<!-- node_ops&#45;&gt;storage_devices -->
+<g id="edge2" class="edge">
+<title>node_ops-&gt;storage_devices</title>
+<path fill="none" stroke="#000000" d="M313.8416,-85.0279C331.9151,-89.6947 352.6421,-94.8284 371.6094,-99 387.5453,-102.5049 404.5322,-105.9389 421.058,-109.1199"></path>
+<polygon fill="#000000" stroke="#000000" points="420.7961,-112.6329 431.2744,-111.0662 422.1061,-105.7566 420.7961,-112.6329"></polygon>
+</g>
+<!-- traffic -->
+<g id="node4" class="node">
+<title>traffic</title>
+<polygon fill="none" stroke="#000000" points="612.0662,-64.5442 612.0662,-79.4558 556.0883,-90 476.9237,-90 420.9459,-79.4558 420.9459,-64.5442 476.9237,-54 556.0883,-54 612.0662,-64.5442"></polygon>
+<text text-anchor="middle" x="516.506" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">High internet traffic</text>
+</g>
+<!-- node_ops&#45;&gt;traffic -->
+<g id="edge3" class="edge">
+<title>node_ops-&gt;traffic</title>
+<path fill="none" stroke="#000000" d="M335.6204,-72C358.9401,-72 385.437,-72 410.8206,-72"></path>
+<polygon fill="#000000" stroke="#000000" points="410.8603,-75.5001 420.8603,-72 410.8602,-68.5001 410.8603,-75.5001"></polygon>
+</g>
+<!-- dev_ops -->
+<g id="node5" class="node">
+<title>dev_ops</title>
+<polygon fill="none" stroke="#000000" points="603.7732,-10.5442 603.7732,-25.4558 552.6533,-36 480.3588,-36 429.2389,-25.4558 429.2389,-10.5442 480.3588,0 552.6533,0 603.7732,-10.5442"></polygon>
+<text text-anchor="middle" x="516.506" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Complex DevOps</text>
+</g>
+<!-- node_ops&#45;&gt;dev_ops -->
+<g id="edge4" class="edge">
+<title>node_ops-&gt;dev_ops</title>
+<path fill="none" stroke="#000000" d="M313.8416,-58.9721C331.9151,-54.3053 352.6421,-49.1716 371.6094,-45 393.4983,-40.1858 417.3702,-35.5053 439.3061,-31.4306"></path>
+<polygon fill="#000000" stroke="#000000" points="440.0334,-34.8556 449.2344,-29.6027 438.7659,-27.9713 440.0334,-34.8556"></polygon>
+</g>
+<!-- nodes -->
+<g id="node2" class="node">
+<title>nodes</title>
+<polygon fill="none" stroke="#000000" points="155.0331,-64.5442 155.0331,-79.4558 110.7934,-90 48.229,-90 3.9893,-79.4558 3.9893,-64.5442 48.229,-54 110.7934,-54 155.0331,-64.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="159.0337,-61.3856 159.0337,-82.6144 111.2637,-94 47.7588,-94 -.0112,-82.6144 -.0112,-61.3856 47.7588,-50 111.2637,-50 159.0337,-61.3856"></polygon>
+<text text-anchor="middle" x="79.5112" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Network nodes</text>
+</g>
+<!-- nodes&#45;&gt;node_ops -->
+<g id="edge1" class="edge">
+<title>nodes-&gt;node_ops</title>
+<path fill="none" stroke="#000000" d="M159.1177,-72C167.5908,-72 176.2145,-72 184.6991,-72"></path>
+<polygon fill="#000000" stroke="#000000" points="184.9599,-75.5001 194.9599,-72 184.9599,-68.5001 184.9599,-75.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h3 id="High-end-storage-devices-challenge"><a class="anchor hidden-xs" href="#High-end-storage-devices-challenge" title="High-end-storage-devices-challenge"><span class="octicon octicon-link"></span></a>High end storage devices (challenge)</h3><p>All main-net capable implementations require at least SSD to maintable acceptable operating speed, and NVMe is desirable for a initial sync (downloading all the blocks and reconstituting the current state of the blockchain).</p><h3 id="Internet-traffic-challenge"><a class="anchor hidden-xs" href="#Internet-traffic-challenge" title="Internet-traffic-challenge"><span class="octicon octicon-link"></span></a>Internet traffic (challenge)</h3><p>After initial sync, traffic usage should not be very high. However, if many new nodes joining the network, the outgoing traffic of the incument nodes may increase, to serve blocks and initial state to the new-joiners.</p><h3 id="DevOps-challenge"><a class="anchor hidden-xs" href="#DevOps-challenge" title="DevOps-challenge"><span class="octicon octicon-link"></span></a>DevOps (challenge)</h3><p>Ethereum nodes transmit, process, and store large amounts of data. They also often have very little tolerance to downtime. These two characteristics mean that management of Ethereum nodes can be non-trivial.</p><h2 id="Dapp-developers-agent"><a class="anchor hidden-xs" href="#Dapp-developers-agent" title="Dapp-developers-agent"><span class="octicon octicon-link"></span></a>Dapp developers (agent)</h2><p>Dapp developers are mainly concerned with two issues: scalability and security. For some potential dapps, Ethereum as a platform does not provide enough capacity in terms of transactional throughput, cost of transactions, capacity of data retention.<br>
+These two issued can be thought of mirroring the issues facing the end users. Higher scalability correlates to the lower cost for users. Better security measures for smart contracts translate to easier risk assessment for the users.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: dapp_devs Pages: 1 -->
+<svg width="459pt" height="98pt" viewBox="0.00 0.00 459.41 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
+<title>dapp_devs</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-94 455.4118,-94 455.4118,4 -4,4"></polygon>
+<!-- dapp_devs -->
+<g id="node1" class="node">
+<title>dapp_devs</title>
+<ellipse fill="none" stroke="#000000" cx="225.9127" cy="-45" rx="76.3882" ry="18"></ellipse>
+<text text-anchor="middle" x="225.9127" y="-40.8" font-family="Times,serif" font-size="14.00" fill="#000000">Dapp developers</text>
+</g>
+<!-- scalability -->
+<g id="node3" class="node">
+<title>scalability</title>
+<polygon fill="none" stroke="#000000" points="451.5649,-64.5442 451.5649,-79.4558 418.2888,-90 371.2294,-90 337.9534,-79.4558 337.9534,-64.5442 371.2294,-54 418.2888,-54 451.5649,-64.5442"></polygon>
+<text text-anchor="middle" x="394.7591" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Scalability</text>
+</g>
+<!-- dapp_devs&#45;&gt;scalability -->
+<g id="edge2" class="edge">
+<title>dapp_devs-&gt;scalability</title>
+<path fill="none" stroke="#000000" d="M289.2652,-55.1306C302.9112,-57.3127 317.3419,-59.6203 331.0032,-61.8049"></path>
+<polygon fill="#000000" stroke="#000000" points="330.8471,-65.3243 341.2744,-63.4473 331.9525,-58.4121 330.8471,-65.3243"></polygon>
+</g>
+<!-- security -->
+<g id="node4" class="node">
+<title>security</title>
+<polygon fill="none" stroke="#000000" points="441.3164,-10.5442 441.3164,-25.4558 414.0438,-36 375.4745,-36 348.2019,-25.4558 348.2019,-10.5442 375.4745,0 414.0438,0 441.3164,-10.5442"></polygon>
+<text text-anchor="middle" x="394.7591" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Security</text>
+</g>
+<!-- dapp_devs&#45;&gt;security -->
+<g id="edge3" class="edge">
+<title>dapp_devs-&gt;security</title>
+<path fill="none" stroke="#000000" d="M289.2652,-34.8694C305.3084,-32.3039 322.4361,-29.5651 338.1231,-27.0566"></path>
+<polygon fill="#000000" stroke="#000000" points="338.8759,-30.4808 348.1977,-25.4456 337.7705,-23.5686 338.8759,-30.4808"></polygon>
+</g>
+<!-- use_cases -->
+<g id="node2" class="node">
+<title>use_cases</title>
+<polygon fill="none" stroke="#000000" points="109.5884,-37.5442 109.5884,-52.4558 78.7005,-63 35.0183,-63 4.1304,-52.4558 4.1304,-37.5442 35.0183,-27 78.7005,-27 109.5884,-37.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="113.5786,-34.6807 113.5786,-55.3193 79.3612,-67 34.3576,-67 .1403,-55.3193 .1403,-34.6807 34.3576,-23 79.3612,-23 113.5786,-34.6807"></polygon>
+<text text-anchor="middle" x="56.8594" y="-40.8" font-family="Times,serif" font-size="14.00" fill="#000000">Use cases</text>
+</g>
+<!-- use_cases&#45;&gt;dapp_devs -->
+<g id="edge1" class="edge">
+<title>use_cases-&gt;dapp_devs</title>
+<path fill="none" stroke="#000000" d="M113.622,-45C121.8952,-45 130.5676,-45 139.2699,-45"></path>
+<polygon fill="#000000" stroke="#000000" points="139.4774,-48.5001 149.4774,-45 139.4773,-41.5001 139.4774,-48.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h3 id="Scalability-challenge"><a class="anchor hidden-xs" href="#Scalability-challenge" title="Scalability-challenge"><span class="octicon octicon-link"></span></a>Scalability (challenge)</h3><p>Some use cases of smart contracts and currency require certain level of scalability, which usually translates to how quickly a transaction gets “confirmed” related to how high gas price is paid. If scalability of the system is not enough, some more complex constructions (e.g. Level 2 solutions like state channels and Plasma) might need to be employed, at the cost of increased complexity.</p><h3 id="Security-challenge"><a class="anchor hidden-xs" href="#Security-challenge" title="Security-challenge"><span class="octicon octicon-link"></span></a>Security (challenge)</h3><p>Whenever users’ interaction with the Ethereum system are less trivial than currency transfer, some security analysis is usually performed, to demonstrate to the potential users of smart contracts that most likely their transactions will not have unintended consequences. So far the tradition is that the additional cost of performing security audits of the code, or formal verification, or other security measures is paid by the dapp developers.</p><h2 id="Core-developers-agent"><a class="anchor hidden-xs" href="#Core-developers-agent" title="Core-developers-agent"><span class="octicon octicon-link"></span></a>Core developers (agent)</h2><p>Contribuion of core developers is in developing and maintaining the software that, when run on the computers connected to the Internet, gives rise to the Ethereum network.<br>
+Development of a fully functional Ethereum implementation which is capable of run on the mainnet is challenging.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: core_devs Pages: 1 -->
+<svg width="616pt" height="152pt" viewBox="0.00 0.00 615.93 152.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148)">
+<title>core_devs</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-148 611.9292,-148 611.9292,4 -4,4"></polygon>
+<!-- core_devs -->
+<g id="node1" class="node">
+<title>core_devs</title>
+<ellipse fill="none" stroke="#000000" cx="264.4055" cy="-72" rx="74.0981" ry="18"></ellipse>
+<text text-anchor="middle" x="264.4055" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Core developers</text>
+</g>
+<!-- new_implementations -->
+<g id="node3" class="node">
+<title>new_implementations</title>
+<polygon fill="none" stroke="#000000" points="595.1246,-118.5442 595.1246,-133.4558 534.2422,-144 448.1415,-144 387.2591,-133.4558 387.2591,-118.5442 448.1415,-108 534.2422,-108 595.1246,-118.5442"></polygon>
+<text text-anchor="middle" x="491.1918" y="-121.8" font-family="Times,serif" font-size="14.00" fill="#000000">New implementations</text>
+</g>
+<!-- core_devs&#45;&gt;new_implementations -->
+<g id="edge2" class="edge">
+<title>core_devs-&gt;new_implementations</title>
+<path fill="none" stroke="#000000" d="M316.4332,-84.9152C334.7591,-89.4245 355.5094,-94.4853 374.4545,-99 388.5117,-102.3499 403.536,-105.87 417.9673,-109.2211"></path>
+<polygon fill="#000000" stroke="#000000" points="417.3123,-112.662 427.8443,-111.51 418.8926,-105.8427 417.3123,-112.662"></polygon>
+</g>
+<!-- product_vs_system -->
+<g id="node4" class="node">
+<title>product_vs_system</title>
+<polygon fill="none" stroke="#000000" points="580.7025,-64.5442 580.7025,-79.4558 528.2684,-90 454.1153,-90 401.6812,-79.4558 401.6812,-64.5442 454.1153,-54 528.2684,-54 580.7025,-64.5442"></polygon>
+<text text-anchor="middle" x="491.1918" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Product vs System</text>
+</g>
+<!-- core_devs&#45;&gt;product_vs_system -->
+<g id="edge3" class="edge">
+<title>core_devs-&gt;product_vs_system</title>
+<path fill="none" stroke="#000000" d="M338.6638,-72C355.4018,-72 373.4364,-72 391.0395,-72"></path>
+<polygon fill="#000000" stroke="#000000" points="391.3411,-75.5001 401.341,-72 391.341,-68.5001 391.3411,-75.5001"></polygon>
+</g>
+<!-- backwards_compatibility -->
+<g id="node5" class="node">
+<title>backwards_compatibility</title>
+<polygon fill="none" stroke="#000000" points="608.167,-10.5442 608.167,-25.4558 539.6445,-36 442.7391,-36 374.2167,-25.4558 374.2167,-10.5442 442.7391,0 539.6445,0 608.167,-10.5442"></polygon>
+<text text-anchor="middle" x="491.1918" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Backwards compatibility</text>
+</g>
+<!-- core_devs&#45;&gt;backwards_compatibility -->
+<g id="edge4" class="edge">
+<title>core_devs-&gt;backwards_compatibility</title>
+<path fill="none" stroke="#000000" d="M316.4332,-59.0848C334.7591,-54.5755 355.5094,-49.5147 374.4545,-45 387.3545,-41.9259 401.0689,-38.7084 414.3921,-35.6097"></path>
+<polygon fill="#000000" stroke="#000000" points="415.5343,-38.9378 424.4842,-33.2676 413.9518,-32.119 415.5343,-38.9378"></polygon>
+</g>
+<!-- software -->
+<g id="node2" class="node">
+<title>software</title>
+<polygon fill="none" stroke="#000000" points="150.5258,-64.5442 150.5258,-79.4558 107.5598,-90 46.7967,-90 3.8306,-79.4558 3.8306,-64.5442 46.7967,-54 107.5598,-54 150.5258,-64.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="154.5351,-61.4088 154.5351,-82.5912 108.0456,-94 46.3108,-94 -.1786,-82.5912 -.1786,-61.4088 46.3108,-50 108.0456,-50 154.5351,-61.4088"></polygon>
+<text text-anchor="middle" x="77.1782" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Node software</text>
+</g>
+<!-- software&#45;&gt;core_devs -->
+<g id="edge1" class="edge">
+<title>software-&gt;core_devs</title>
+<path fill="none" stroke="#000000" d="M154.4116,-72C162.7904,-72 171.3498,-72 179.81,-72"></path>
+<polygon fill="#000000" stroke="#000000" points="180.0617,-75.5001 190.0616,-72 180.0616,-68.5001 180.0617,-75.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h4 id="New-implementations-challenge"><a class="anchor hidden-xs" href="#New-implementations-challenge" title="New-implementations-challenge"><span class="octicon octicon-link"></span></a>New implementations (challenge)</h4><p>It is difficult to create new indepdendent implementations (clients) that are capable of working with the main net. Lack of implementation diversity leads to core developers being “conservative” by default.</p><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: new_implementations Pages: 1 -->
+<svg width="439pt" height="44pt" viewBox="0.00 0.00 439.04 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>new_implementations</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-40 435.039,-40 435.039,4 -4,4"></polygon>
+<!-- new_implementations -->
+<g id="node1" class="node">
+<title>new_implementations</title>
+<polygon fill="none" stroke="#000000" points="207.8991,-10.5442 207.8991,-25.4558 147.0167,-36 60.916,-36 .0336,-25.4558 .0336,-10.5442 60.916,0 147.0167,0 207.8991,-10.5442"></polygon>
+<text text-anchor="middle" x="103.9664" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">New implementations</text>
+</g>
+<!-- data_management -->
+<g id="node2" class="node">
+<title>data_management</title>
+<polygon fill="none" stroke="#000000" points="431.0922,-18 384.2891,-36 290.6827,-36 243.8795,-18 290.6827,0 384.2891,0 431.0922,-18"></polygon>
+<text text-anchor="middle" x="337.4859" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Data management</text>
+</g>
+<!-- new_implementations&#45;&gt;data_management -->
+<g id="edge1" class="edge">
+<title>new_implementations-&gt;data_management</title>
+<path fill="none" stroke="#000000" d="M218.1794,-18C226.7894,-18 235.418,-18 243.8776,-18"></path>
+<polygon fill="#000000" stroke="#000000" points="218.0916,-14.5001 208.0916,-18 218.0915,-21.5001 218.0916,-14.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h4 id="Data-management-cause"><a class="anchor hidden-xs" href="#Data-management-cause" title="Data-management-cause"><span class="octicon octicon-link"></span></a>Data management (cause)</h4><p>The hardest part of a mainnet capable implementation seems to be data management. Ethereum node needs to transmit, process and store large amounts of data. To do so efficiently, it needs non-trivial techniques. Such techniques, however, are currently not considered in Ethereum specification documents or other literature.</p><h4 id="Large-state-sub-cause"><a class="anchor hidden-xs" href="#Large-state-sub-cause" title="Large-state-sub-cause"><span class="octicon octicon-link"></span></a>Large state (sub-cause)</h4><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: causes Pages: 1 -->
+<svg width="355pt" height="44pt" viewBox="0.00 0.00 355.04 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>causes</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-40 351.0363,-40 351.0363,4 -4,4"></polygon>
+<!-- data_management -->
+<g id="node1" class="node">
+<title>data_management</title>
+<polygon fill="none" stroke="#000000" points="187.1595,-18 140.3564,-36 46.75,-36 -.0532,-18 46.75,0 140.3564,0 187.1595,-18"></polygon>
+<text text-anchor="middle" x="93.5532" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Data management</text>
+</g>
+<!-- large_state -->
+<g id="node2" class="node">
+<title>large_state</title>
+<polygon fill="none" stroke="#000000" points="347.0012,-18 316.0363,-36 254.1063,-36 223.1414,-18 254.1063,0 316.0363,0 347.0012,-18"></polygon>
+<text text-anchor="middle" x="285.0713" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Large state</text>
+</g>
+<!-- data_management&#45;&gt;large_state -->
+<g id="edge1" class="edge">
+<title>data_management-&gt;large_state</title>
+<path fill="none" stroke="#000000" d="M197.5769,-18C206.269,-18 214.8695,-18 223.0892,-18"></path>
+<polygon fill="#000000" stroke="#000000" points="197.3486,-14.5001 187.3485,-18 197.3485,-21.5001 197.3486,-14.5001"></polygon>
+</g>
+</g>
+</svg>
+</pre><h4 id="Product-vs-system-challenge"><a class="anchor hidden-xs" href="#Product-vs-system-challenge" title="Product-vs-system-challenge"><span class="octicon octicon-link"></span></a>Product vs system (challenge)</h4><p>It is difficult to balance product improvements (performance, usability), and the upgrades of Ethereum. Example: preparation for the Istanbul hard fork vs finishing Geth 1.9</p><h4 id="Backwards-compatibility-challenge"><a class="anchor hidden-xs" href="#Backwards-compatibility-challenge" title="Backwards-compatibility-challenge"><span class="octicon octicon-link"></span></a>Backwards compatibility (challenge)</h4><p>It is difficult to balance backwards compatibility (with the existing contracts), and the rule changes that are neccessary for Ethereum system to be sustainable.</p><h4 id="Functional-coupling-cause"><a class="anchor hidden-xs" href="#Functional-coupling-cause" title="Functional-coupling-cause"><span class="octicon octicon-link"></span></a>Functional coupling (cause)</h4><p>In the design of Ethereum, there some crucial concepts with double of tripple functions. First example: gas is used as charge for resources, as well as means of restricting callbacks and recursion depth. Second example: nonce of accounts is used for both replay protection and as input for generating of the contract addresses. Third example (though this is a prevalent implementation choice rather than a requirement of the specification): particia merkle tree is used for both defining what the state root hash is, and for storing data. Functional coupling makes the design inflexible and causes issues when something about the concept needs to be changed. For example, changing gas cost of some operations, like reduction for <code>SSTORE</code> and increase for <code>SLOAD</code> clashes with the concept of call stipend, which is part of the restricting function of gas.</p><h4 id="Spontaneous-voluntary-contributions-vs-Managed-development"><a class="anchor hidden-xs" href="#Spontaneous-voluntary-contributions-vs-Managed-development" title="Spontaneous-voluntary-contributions-vs-Managed-development"><span class="octicon octicon-link"></span></a>Spontaneous voluntary contributions vs Managed development</h4><p>By “spontaneous voluntary contributions” we understand contributions to core implementation by people who are not explicitely asked to do the work, but decide to do it, because they found it interesting and/or important.<br>
+By “managed development” we understand development in the core implementations that are directed by some leadership, according to some implementation plan.<br>
+Both ways of development have their pros and cons. It seems that in the current circumstances we mainly rely on the spontaneous voluntary contributions and that seems to leave important gaps and technical debt.</p><h2 id="Entire-diagram"><a class="anchor hidden-xs" href="#Entire-diagram" title="Entire-diagram"><span class="octicon octicon-link"></span></a>Entire diagram</h2><pre class="graphviz"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: agents Pages: 1 -->
+<svg width="1221pt" height="568pt" viewBox="0.00 0.00 1221.44 568.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 564)">
+<title>agents</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-564 1217.4423,-564 1217.4423,4 -4,4"></polygon>
+<!-- end_users -->
+<g id="node1" class="node">
+<title>end_users</title>
+<ellipse fill="none" stroke="#000000" cx="271.2163" cy="-72" rx="48.697" ry="18"></ellipse>
+<text text-anchor="middle" x="271.2163" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">End users</text>
+</g>
+<!-- no_usecases -->
+<g id="node4" class="node">
+<title>no_usecases</title>
+<polygon fill="none" stroke="#000000" points="585.3754,-118.5442 585.3754,-133.4558 535.4501,-144 464.8449,-144 414.9196,-133.4558 414.9196,-118.5442 464.8449,-108 535.4501,-108 585.3754,-118.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-121.8" font-family="Times,serif" font-size="14.00" fill="#000000">Lack of use cases</text>
+</g>
+<!-- end_users&#45;&gt;no_usecases -->
+<g id="edge3" class="edge">
+<title>end_users-&gt;no_usecases</title>
+<path fill="none" stroke="#000000" d="M312.227,-81.9617C333.4619,-87.0964 359.8167,-93.4327 383.4102,-99 399.2542,-102.7387 416.3203,-106.7147 432.3808,-110.4335"></path>
+<polygon fill="#000000" stroke="#000000" points="431.6994,-113.8683 442.2309,-112.7114 433.2766,-107.0482 431.6994,-113.8683"></polygon>
+</g>
+<!-- tx_cost -->
+<g id="node5" class="node">
+<title>tx_cost</title>
+<polygon fill="none" stroke="#000000" points="595.0829,-64.5442 595.0829,-79.4558 539.471,-90 460.824,-90 405.2121,-79.4558 405.2121,-64.5442 460.824,-54 539.471,-54 595.0829,-64.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Cost of transactions</text>
+</g>
+<!-- end_users&#45;&gt;tx_cost -->
+<g id="edge4" class="edge">
+<title>end_users-&gt;tx_cost</title>
+<path fill="none" stroke="#000000" d="M320.3278,-72C342.1331,-72 368.6968,-72 394.6427,-72"></path>
+<polygon fill="#000000" stroke="#000000" points="394.93,-75.5001 404.9299,-72 394.9299,-68.5001 394.93,-75.5001"></polygon>
+</g>
+<!-- tx_safety -->
+<g id="node6" class="node">
+<title>tx_safety</title>
+<polygon fill="none" stroke="#000000" points="580.4836,-10.5442 580.4836,-25.4558 533.4238,-36 466.8712,-36 419.8114,-25.4558 419.8114,-10.5442 466.8712,0 533.4238,0 580.4836,-10.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Risk assessment</text>
+</g>
+<!-- end_users&#45;&gt;tx_safety -->
+<g id="edge5" class="edge">
+<title>end_users-&gt;tx_safety</title>
+<path fill="none" stroke="#000000" d="M312.227,-62.0383C333.4619,-56.9036 359.8167,-50.5673 383.4102,-45 399.6733,-41.1624 417.2242,-37.0748 433.6533,-33.2719"></path>
+<polygon fill="#000000" stroke="#000000" points="434.7616,-36.608 443.7163,-30.9456 433.1849,-29.7879 434.7616,-36.608"></polygon>
+</g>
+<!-- resources -->
+<g id="node2" class="node">
+<title>resources</title>
+<polygon fill="none" stroke="#000000" points="134.3157,-95.5442 134.3157,-110.4558 102.212,-121 56.8105,-121 24.7068,-110.4558 24.7068,-95.5442 56.8105,-85 102.212,-85 134.3157,-95.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="138.3088,-92.6461 138.3088,-113.3539 102.8499,-125 56.1726,-125 20.7137,-113.3539 20.7137,-92.6461 56.1726,-81 102.8499,-81 138.3088,-92.6461"></polygon>
+<text text-anchor="middle" x="79.5112" y="-98.8" font-family="Times,serif" font-size="14.00" fill="#000000">Resources</text>
+</g>
+<!-- resources&#45;&gt;end_users -->
+<g id="edge1" class="edge">
+<title>resources-&gt;end_users</title>
+<path fill="none" stroke="#000000" d="M148.4661,-91.8495C174.3413,-87.6653 203.062,-83.021 226.2128,-79.2774"></path>
+<polygon fill="#000000" stroke="#000000" points="147.6449,-88.4368 138.3319,-93.4883 148.7624,-95.347 147.6449,-88.4368"></polygon>
+</g>
+<!-- usage -->
+<g id="node3" class="node">
+<title>usage</title>
+<polygon fill="none" stroke="#000000" points="117.6308,-33.5442 117.6308,-48.4558 95.3009,-59 63.7216,-59 41.3917,-48.4558 41.3917,-33.5442 63.7216,-23 95.3009,-23 117.6308,-33.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="121.6367,-31.011 121.6367,-50.989 96.2003,-63 62.8221,-63 37.3857,-50.989 37.3857,-31.011 62.8221,-19 96.2003,-19 121.6367,-31.011"></polygon>
+<text text-anchor="middle" x="79.5112" y="-36.8" font-family="Times,serif" font-size="14.00" fill="#000000">Usage</text>
+</g>
+<!-- usage&#45;&gt;end_users -->
+<g id="edge2" class="edge">
+<title>usage-&gt;end_users</title>
+<path fill="none" stroke="#000000" d="M131.7256,-49.4434C161.3065,-54.2268 197.9369,-60.1502 226.2369,-64.7265"></path>
+<polygon fill="#000000" stroke="#000000" points="132.0122,-45.9444 121.5817,-47.8031 130.8948,-52.8546 132.0122,-45.9444"></polygon>
+</g>
+<!-- fee_burn -->
+<g id="node7" class="node">
+<title>fee_burn</title>
+<polygon fill="none" stroke="#000000" points="830.655,-90 764.908,-90 764.908,-54 830.655,-54 830.655,-90"></polygon>
+<text text-anchor="middle" x="797.7815" y="-67.8" font-family="Times,serif" font-size="14.00" fill="#000000">Fee burn</text>
+</g>
+<!-- tx_cost&#45;&gt;fee_burn -->
+<g id="edge6" class="edge">
+<title>tx_cost-&gt;fee_burn</title>
+<path fill="none" stroke="#000000" d="M605.14,-72C661.2535,-72 726.4941,-72 764.8392,-72"></path>
+<polygon fill="#000000" stroke="#000000" points="605.1391,-68.5001 595.1391,-72 605.139,-75.5001 605.1391,-68.5001"></polygon>
+</g>
+<!-- node_ops -->
+<g id="node8" class="node">
+<title>node_ops</title>
+<ellipse fill="none" stroke="#000000" cx="271.2163" cy="-226" rx="70.0875" ry="18"></ellipse>
+<text text-anchor="middle" x="271.2163" y="-221.8" font-family="Times,serif" font-size="14.00" fill="#000000">Node operators</text>
+</g>
+<!-- storage_devices -->
+<g id="node10" class="node">
+<title>storage_devices</title>
+<polygon fill="none" stroke="#000000" points="942.5749,-222.5442 942.5749,-237.4558 857.7569,-248 737.8061,-248 652.9881,-237.4558 652.9881,-222.5442 737.8061,-212 857.7569,-212 942.5749,-222.5442"></polygon>
+<text text-anchor="middle" x="797.7815" y="-225.8" font-family="Times,serif" font-size="14.00" fill="#000000">Costly high end storage devices</text>
+</g>
+<!-- node_ops&#45;&gt;storage_devices -->
+<g id="edge8" class="edge">
+<title>node_ops-&gt;storage_devices</title>
+<path fill="none" stroke="#000000" d="M341.6849,-226.5353C418.2248,-227.1167 542.8911,-228.0638 642.559,-228.8209"></path>
+<polygon fill="#000000" stroke="#000000" points="642.7101,-232.322 652.7364,-228.8982 642.7633,-225.3222 642.7101,-232.322"></polygon>
+</g>
+<!-- traffic -->
+<g id="node11" class="node">
+<title>traffic</title>
+<polygon fill="none" stroke="#000000" points="595.7076,-172.5442 595.7076,-187.4558 539.7298,-198 460.5652,-198 404.5874,-187.4558 404.5874,-172.5442 460.5652,-162 539.7298,-162 595.7076,-172.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">High internet traffic</text>
+</g>
+<!-- node_ops&#45;&gt;traffic -->
+<g id="edge9" class="edge">
+<title>node_ops-&gt;traffic</title>
+<path fill="none" stroke="#000000" d="M326.6342,-214.8647C356.0083,-208.9624 392.5264,-201.6247 424.4728,-195.2056"></path>
+<polygon fill="#000000" stroke="#000000" points="425.555,-198.5582 434.6695,-193.1567 424.176,-191.6954 425.555,-198.5582"></polygon>
+</g>
+<!-- dev_ops -->
+<g id="node12" class="node">
+<title>dev_ops</title>
+<polygon fill="none" stroke="#000000" points="587.4147,-264.5442 587.4147,-279.4558 536.2947,-290 464.0003,-290 412.8803,-279.4558 412.8803,-264.5442 464.0003,-254 536.2947,-254 587.4147,-264.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-267.8" font-family="Times,serif" font-size="14.00" fill="#000000">Complex DevOps</text>
+</g>
+<!-- node_ops&#45;&gt;dev_ops -->
+<g id="edge10" class="edge">
+<title>node_ops-&gt;dev_ops</title>
+<path fill="none" stroke="#000000" d="M326.6342,-237.1353C356.9749,-243.2318 394.9376,-250.8598 427.6114,-257.425"></path>
+<polygon fill="#000000" stroke="#000000" points="427.0738,-260.8869 437.5674,-259.4255 428.4529,-254.0241 427.0738,-260.8869"></polygon>
+</g>
+<!-- nodes -->
+<g id="node9" class="node">
+<title>nodes</title>
+<polygon fill="none" stroke="#000000" points="155.0331,-218.5442 155.0331,-233.4558 110.7934,-244 48.229,-244 3.9893,-233.4558 3.9893,-218.5442 48.229,-208 110.7934,-208 155.0331,-218.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="159.0337,-215.3856 159.0337,-236.6144 111.2637,-248 47.7588,-248 -.0112,-236.6144 -.0112,-215.3856 47.7588,-204 111.2637,-204 159.0337,-215.3856"></polygon>
+<text text-anchor="middle" x="79.5112" y="-221.8" font-family="Times,serif" font-size="14.00" fill="#000000">Network nodes</text>
+</g>
+<!-- nodes&#45;&gt;node_ops -->
+<g id="edge7" class="edge">
+<title>nodes-&gt;node_ops</title>
+<path fill="none" stroke="#000000" d="M159.146,-226C169.4847,-226 180.0826,-226 190.4397,-226"></path>
+<polygon fill="#000000" stroke="#000000" points="190.698,-229.5001 200.698,-226 190.698,-222.5001 190.698,-229.5001"></polygon>
+</g>
+<!-- large_state -->
+<g id="node23" class="node">
+<title>large_state</title>
+<polygon fill="none" stroke="#000000" points="1107.9371,-232 1075.684,-250 1011.1777,-250 978.9245,-232 1011.1777,-214 1075.684,-214 1107.9371,-232"></polygon>
+<text text-anchor="middle" x="1043.4308" y="-227.8" font-family="Times,serif" font-size="14.00" fill="#000000">Large_state</text>
+</g>
+<!-- storage_devices&#45;&gt;large_state -->
+<g id="edge21" class="edge">
+<title>storage_devices-&gt;large_state</title>
+<path fill="none" stroke="#000000" d="M952.9888,-231.2636C962.2858,-231.3393 971.3163,-231.4129 979.8456,-231.4823"></path>
+<polygon fill="#000000" stroke="#000000" points="952.8353,-227.7624 942.8071,-231.1808 952.7782,-234.7621 952.8353,-227.7624"></polygon>
+</g>
+<!-- data_management -->
+<g id="node22" class="node">
+<title>data_management</title>
+<polygon fill="none" stroke="#000000" points="891.3879,-284 844.5847,-302 750.9783,-302 704.1751,-284 750.9783,-266 844.5847,-266 891.3879,-284"></polygon>
+<text text-anchor="middle" x="797.7815" y="-279.8" font-family="Times,serif" font-size="14.00" fill="#000000">Data management</text>
+</g>
+<!-- dev_ops&#45;&gt;data_management -->
+<g id="edge18" class="edge">
+<title>dev_ops-&gt;data_management</title>
+<path fill="none" stroke="#000000" d="M597.7992,-275.9371C635.0296,-277.4382 677.1246,-279.1354 713.057,-280.5841"></path>
+<polygon fill="#000000" stroke="#000000" points="597.5694,-272.4251 587.4365,-275.5193 597.2873,-279.4194 597.5694,-272.4251"></polygon>
+</g>
+<!-- dapp_devs -->
+<g id="node13" class="node">
+<title>dapp_devs</title>
+<ellipse fill="none" stroke="#000000" cx="271.2163" cy="-515" rx="76.3882" ry="18"></ellipse>
+<text text-anchor="middle" x="271.2163" y="-510.8" font-family="Times,serif" font-size="14.00" fill="#000000">Dapp developers</text>
+</g>
+<!-- scalability -->
+<g id="node15" class="node">
+<title>scalability</title>
+<polygon fill="none" stroke="#000000" points="556.9532,-534.5442 556.9532,-549.4558 523.6772,-560 476.6178,-560 443.3418,-549.4558 443.3418,-534.5442 476.6178,-524 523.6772,-524 556.9532,-534.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-537.8" font-family="Times,serif" font-size="14.00" fill="#000000">Scalability</text>
+</g>
+<!-- dapp_devs&#45;&gt;scalability -->
+<g id="edge12" class="edge">
+<title>dapp_devs-&gt;scalability</title>
+<path fill="none" stroke="#000000" d="M339.5931,-523.0643C369.1756,-526.5533 403.6885,-530.6237 433.1185,-534.0946"></path>
+<polygon fill="#000000" stroke="#000000" points="432.9587,-537.6 443.2998,-535.2954 433.7787,-530.6482 432.9587,-537.6"></polygon>
+</g>
+<!-- security -->
+<g id="node16" class="node">
+<title>security</title>
+<polygon fill="none" stroke="#000000" points="546.7047,-480.5442 546.7047,-495.4558 519.4321,-506 480.8629,-506 453.5903,-495.4558 453.5903,-480.5442 480.8629,-470 519.4321,-470 546.7047,-480.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-483.8" font-family="Times,serif" font-size="14.00" fill="#000000">Security</text>
+</g>
+<!-- dapp_devs&#45;&gt;security -->
+<g id="edge13" class="edge">
+<title>dapp_devs-&gt;security</title>
+<path fill="none" stroke="#000000" d="M339.5931,-506.9357C372.6192,-503.0406 411.7904,-498.4208 443.1737,-494.7195"></path>
+<polygon fill="#000000" stroke="#000000" points="443.9769,-498.1491 453.4981,-493.5018 443.1569,-491.1973 443.9769,-498.1491"></polygon>
+</g>
+<!-- use_cases -->
+<g id="node14" class="node">
+<title>use_cases</title>
+<polygon fill="none" stroke="#000000" points="132.2403,-507.5442 132.2403,-522.4558 101.3523,-533 57.6702,-533 26.7822,-522.4558 26.7822,-507.5442 57.6702,-497 101.3523,-497 132.2403,-507.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="136.2304,-504.6807 136.2304,-525.3193 102.0131,-537 57.0094,-537 22.7921,-525.3193 22.7921,-504.6807 57.0094,-493 102.0131,-493 136.2304,-504.6807"></polygon>
+<text text-anchor="middle" x="79.5112" y="-510.8" font-family="Times,serif" font-size="14.00" fill="#000000">Use cases</text>
+</g>
+<!-- use_cases&#45;&gt;dapp_devs -->
+<g id="edge11" class="edge">
+<title>use_cases-&gt;dapp_devs</title>
+<path fill="none" stroke="#000000" d="M136.251,-515C151.4287,-515 168.1857,-515 184.5797,-515"></path>
+<polygon fill="#000000" stroke="#000000" points="184.7231,-518.5001 194.7231,-515 184.723,-511.5001 184.7231,-518.5001"></polygon>
+</g>
+<!-- core_devs -->
+<g id="node17" class="node">
+<title>core_devs</title>
+<ellipse fill="none" stroke="#000000" cx="271.2163" cy="-380" rx="74.0981" ry="18"></ellipse>
+<text text-anchor="middle" x="271.2163" y="-375.8" font-family="Times,serif" font-size="14.00" fill="#000000">Core developers</text>
+</g>
+<!-- new_implementations -->
+<g id="node19" class="node">
+<title>new_implementations</title>
+<polygon fill="none" stroke="#000000" points="604.0802,-318.5442 604.0802,-333.4558 543.1978,-344 457.0972,-344 396.2148,-333.4558 396.2148,-318.5442 457.0972,-308 543.1978,-308 604.0802,-318.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-321.8" font-family="Times,serif" font-size="14.00" fill="#000000">New implementations</text>
+</g>
+<!-- core_devs&#45;&gt;new_implementations -->
+<g id="edge15" class="edge">
+<title>core_devs-&gt;new_implementations</title>
+<path fill="none" stroke="#000000" d="M323.7046,-367.2666C342.5267,-362.7274 363.9115,-357.601 383.4102,-353 397.4747,-349.6812 412.5024,-346.1754 426.9347,-342.8285"></path>
+<polygon fill="#000000" stroke="#000000" points="427.8596,-346.207 436.8121,-340.541 426.2802,-339.3875 427.8596,-346.207"></polygon>
+</g>
+<!-- product_vs_system -->
+<g id="node20" class="node">
+<title>product_vs_system</title>
+<polygon fill="none" stroke="#000000" points="589.6582,-426.5442 589.6582,-441.4558 537.224,-452 463.071,-452 410.6368,-441.4558 410.6368,-426.5442 463.071,-416 537.224,-416 589.6582,-426.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-429.8" font-family="Times,serif" font-size="14.00" fill="#000000">Product vs System</text>
+</g>
+<!-- core_devs&#45;&gt;product_vs_system -->
+<g id="edge16" class="edge">
+<title>core_devs-&gt;product_vs_system</title>
+<path fill="none" stroke="#000000" d="M323.7046,-392.7334C342.5267,-397.2726 363.9115,-402.399 383.4102,-407 398.6895,-410.6054 415.1054,-414.4316 430.6599,-418.035"></path>
+<polygon fill="#000000" stroke="#000000" points="430.2049,-421.5221 440.7365,-420.3662 431.7827,-414.7022 430.2049,-421.5221"></polygon>
+</g>
+<!-- backwards_compatibility -->
+<g id="node21" class="node">
+<title>backwards_compatibility</title>
+<polygon fill="none" stroke="#000000" points="617.1227,-372.5442 617.1227,-387.4558 548.6002,-398 451.6948,-398 383.1723,-387.4558 383.1723,-372.5442 451.6948,-362 548.6002,-362 617.1227,-372.5442"></polygon>
+<text text-anchor="middle" x="500.1475" y="-375.8" font-family="Times,serif" font-size="14.00" fill="#000000">Backwards compatibility</text>
+</g>
+<!-- core_devs&#45;&gt;backwards_compatibility -->
+<g id="edge17" class="edge">
+<title>core_devs-&gt;backwards_compatibility</title>
+<path fill="none" stroke="#000000" d="M345.5437,-380C354.4605,-380 363.7494,-380 373.1524,-380"></path>
+<polygon fill="#000000" stroke="#000000" points="373.3883,-383.5001 383.3883,-380 373.3883,-376.5001 373.3883,-383.5001"></polygon>
+</g>
+<!-- software -->
+<g id="node18" class="node">
+<title>software</title>
+<polygon fill="none" stroke="#000000" points="152.8588,-372.5442 152.8588,-387.4558 109.8928,-398 49.1297,-398 6.1637,-387.4558 6.1637,-372.5442 49.1297,-362 109.8928,-362 152.8588,-372.5442"></polygon>
+<polygon fill="none" stroke="#000000" points="156.8681,-369.4088 156.8681,-390.5912 110.3786,-402 48.6438,-402 2.1544,-390.5912 2.1544,-369.4088 48.6438,-358 110.3786,-358 156.8681,-369.4088"></polygon>
+<text text-anchor="middle" x="79.5112" y="-375.8" font-family="Times,serif" font-size="14.00" fill="#000000">Node software</text>
+</g>
+<!-- software&#45;&gt;core_devs -->
+<g id="edge14" class="edge">
+<title>software-&gt;core_devs</title>
+<path fill="none" stroke="#000000" d="M156.9324,-380C166.7274,-380 176.7892,-380 186.6876,-380"></path>
+<polygon fill="#000000" stroke="#000000" points="186.9256,-383.5001 196.9256,-380 186.9256,-376.5001 186.9256,-383.5001"></polygon>
+</g>
+<!-- new_implementations&#45;&gt;data_management -->
+<g id="edge19" class="edge">
+<title>new_implementations-&gt;data_management</title>
+<path fill="none" stroke="#000000" d="M591.3991,-313.1232C635.7766,-306.861 688.228,-299.4594 729.1479,-293.6851"></path>
+<polygon fill="#000000" stroke="#000000" points="590.8901,-309.6603 581.4773,-314.5233 591.8683,-316.5916 590.8901,-309.6603"></polygon>
+</g>
+<!-- spontaneous_vs_managed -->
+<g id="node25" class="node">
+<title>spontaneous_vs_managed</title>
+<polygon fill="none" stroke="#000000" points="923.2177,-434 860.4996,-452 735.0634,-452 672.3453,-434 735.0634,-416 860.4996,-416 923.2177,-434"></polygon>
+<text text-anchor="middle" x="797.7815" y="-429.8" font-family="Times,serif" font-size="14.00" fill="#000000">Spontaneous vs managed</text>
+</g>
+<!-- product_vs_system&#45;&gt;spontaneous_vs_managed -->
+<g id="edge23" class="edge">
+<title>product_vs_system-&gt;spontaneous_vs_managed</title>
+<path fill="none" stroke="#000000" d="M600.0134,-434C623.1868,-434 648.1425,-434 672.2609,-434"></path>
+<polygon fill="#000000" stroke="#000000" points="599.8512,-430.5001 589.8511,-434 599.8511,-437.5001 599.8512,-430.5001"></polygon>
+</g>
+<!-- functional_coupling -->
+<g id="node24" class="node">
+<title>functional_coupling</title>
+<polygon fill="none" stroke="#000000" points="899.7883,-380 848.7849,-398 746.7781,-398 695.7747,-380 746.7781,-362 848.7849,-362 899.7883,-380"></polygon>
+<text text-anchor="middle" x="797.7815" y="-375.8" font-family="Times,serif" font-size="14.00" fill="#000000">Functional coupling</text>
+</g>
+<!-- backwards_compatibility&#45;&gt;functional_coupling -->
+<g id="edge22" class="edge">
+<title>backwards_compatibility-&gt;functional_coupling</title>
+<path fill="none" stroke="#000000" d="M627.0006,-380C649.814,-380 673.3314,-380 695.3446,-380"></path>
+<polygon fill="#000000" stroke="#000000" points="626.9261,-376.5001 616.9261,-380 626.9261,-383.5001 626.9261,-376.5001"></polygon>
+</g>
+<!-- state_rent -->
+<g id="node26" class="node">
+<title>state_rent</title>
+<polygon fill="none" stroke="#000000" points="1213.5722,-300 1144.0536,-300 1144.0536,-264 1213.5722,-264 1213.5722,-300"></polygon>
+<text text-anchor="middle" x="1178.8129" y="-277.8" font-family="Times,serif" font-size="14.00" fill="#000000">State rent</text>
+</g>
+<!-- backwards_compatibility&#45;&gt;state_rent -->
+<g id="edge25" class="edge">
+<title>backwards_compatibility-&gt;state_rent</title>
+<path fill="none" stroke="#000000" stroke-dasharray="1,5" d="M583.2315,-363.9547C605.7709,-359.9735 630.2113,-355.9942 652.8848,-353 854.2708,-326.4054 911.3948,-363.3766 1108.1835,-313 1120.2482,-309.9115 1132.8684,-304.9758 1144.0482,-299.9427"></path>
+<polygon fill="#000000" stroke="#000000" points="582.5901,-360.5138 573.3621,-365.7191 583.822,-367.4045 582.5901,-360.5138"></polygon>
+</g>
+<!-- data_management&#45;&gt;large_state -->
+<g id="edge20" class="edge">
+<title>data_management-&gt;large_state</title>
+<path fill="none" stroke="#000000" d="M872.3864,-270.9687C895.0195,-266.7813 919.9149,-261.9405 942.6781,-257 961.3471,-252.9481 981.8296,-247.9655 999.4231,-243.5176"></path>
+<polygon fill="#000000" stroke="#000000" points="871.7052,-267.5352 862.5014,-272.783 872.9689,-274.4202 871.7052,-267.5352"></polygon>
+</g>
+<!-- stateless -->
+<g id="node27" class="node">
+<title>stateless</title>
+<polygon fill="none" stroke="#000000" points="1095.9638,-304 990.8978,-304 990.8978,-268 1095.9638,-268 1095.9638,-304"></polygon>
+<text text-anchor="middle" x="1043.4308" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Stateless clients</text>
+</g>
+<!-- data_management&#45;&gt;stateless -->
+<g id="edge26" class="edge">
+<title>data_management-&gt;stateless</title>
+<path fill="none" stroke="#000000" d="M899.6695,-284.8295C930.913,-285.0839 964.0189,-285.3535 990.5761,-285.5697"></path>
+<polygon fill="#000000" stroke="#000000" points="899.6298,-281.3292 889.6016,-284.7476 899.5727,-288.329 899.6298,-281.3292"></polygon>
+</g>
+<!-- large_state&#45;&gt;state_rent -->
+<g id="edge24" class="edge">
+<title>large_state-&gt;state_rent</title>
+<path fill="none" stroke="#000000" d="M1092.3927,-250.0829C1109.4432,-256.38 1128.2144,-263.3127 1143.8937,-269.1034"></path>
+<polygon fill="#000000" stroke="#000000" points="1093.1822,-246.6434 1082.5889,-246.4621 1090.757,-253.2099 1093.1822,-246.6434"></polygon>
+</g>
+</g>
+</svg>
+</pre><h2 id="TODOs"><a class="anchor hidden-xs" href="#TODOs" title="TODOs"><span class="octicon octicon-link"></span></a>TODOs</h2><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>Add colours to different types of concepts, so that it is easier to see them.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>Discuss and correct methodology, wording, and content (specically the challenges)</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>Levels of criticality for challenges, expressed by colours</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>Add remaining open projects to the solutions</li>
+</ul></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Ethereum-1x-Definition" title="Ethereum 1x Definition">Ethereum 1x Definition</a><ul class="nav">
+<li><a href="#Objective" title="Objective">Objective</a></li>
+<li><a href="#Methodology-and-terminology" title="Methodology and terminology">Methodology and terminology</a><ul class="nav">
+<li><a href="#Agents0" title="Agents">Agents</a></li>
+<li><a href="#Contributions" title="Contributions">Contributions</a></li>
+<li><a href="#Challenges" title="Challenges">Challenges</a></li>
+<li><a href="#Causes" title="Causes">Causes</a></li>
+<li><a href="#Solutions" title="Solutions">Solutions</a></li>
+</ul>
+</li>
+<li><a href="#Agents" title="Agents">Agents</a></li>
+<li><a href="#End-users-agent" title="End users (agent)">End users (agent)</a><ul class="nav">
+<li><a href="#Lack-of-use-cases-challenge" title="Lack of use cases (challenge)">Lack of use cases (challenge)</a></li>
+<li><a href="#Cost-of-transactions-challenge" title="Cost of transactions (challenge)">Cost of transactions (challenge)</a></li>
+<li><a href="#Risk-assessment-challenge" title="Risk assessment (challenge)">Risk assessment (challenge)</a></li>
+</ul>
+</li>
+<li><a href="#Node-operators-agent" title="Node operators (agent)">Node operators (agent)</a><ul class="nav">
+<li><a href="#High-end-storage-devices-challenge" title="High end storage devices (challenge)">High end storage devices (challenge)</a></li>
+<li><a href="#Internet-traffic-challenge" title="Internet traffic (challenge)">Internet traffic (challenge)</a></li>
+<li><a href="#DevOps-challenge" title="DevOps (challenge)">DevOps (challenge)</a></li>
+</ul>
+</li>
+<li><a href="#Dapp-developers-agent" title="Dapp developers (agent)">Dapp developers (agent)</a><ul class="nav">
+<li><a href="#Scalability-challenge" title="Scalability (challenge)">Scalability (challenge)</a></li>
+<li><a href="#Security-challenge" title="Security (challenge)">Security (challenge)</a></li>
+</ul>
+</li>
+<li class=""><a href="#Core-developers-agent" title="Core developers (agent)">Core developers (agent)</a></li>
+<li><a href="#Entire-diagram" title="Entire diagram">Entire diagram</a></li>
+<li><a href="#TODOs" title="TODOs">TODOs</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Ethereum-1x-Definition" title="Ethereum 1x Definition">Ethereum 1x Definition</a><ul class="nav">
+<li><a href="#Objective" title="Objective">Objective</a></li>
+<li class=""><a href="#Methodology-and-terminology" title="Methodology and terminology">Methodology and terminology</a><ul class="nav">
+<li class=""><a href="#Agents0" title="Agents">Agents</a></li>
+<li class=""><a href="#Contributions" title="Contributions">Contributions</a></li>
+<li class=""><a href="#Challenges" title="Challenges">Challenges</a></li>
+<li class=""><a href="#Causes" title="Causes">Causes</a></li>
+<li class=""><a href="#Solutions" title="Solutions">Solutions</a></li>
+</ul>
+</li>
+<li class=""><a href="#Agents" title="Agents">Agents</a></li>
+<li class=""><a href="#End-users-agent" title="End users (agent)">End users (agent)</a><ul class="nav">
+<li class=""><a href="#Lack-of-use-cases-challenge" title="Lack of use cases (challenge)">Lack of use cases (challenge)</a></li>
+<li><a href="#Cost-of-transactions-challenge" title="Cost of transactions (challenge)">Cost of transactions (challenge)</a></li>
+<li><a href="#Risk-assessment-challenge" title="Risk assessment (challenge)">Risk assessment (challenge)</a></li>
+</ul>
+</li>
+<li class=""><a href="#Node-operators-agent" title="Node operators (agent)">Node operators (agent)</a><ul class="nav">
+<li class=""><a href="#High-end-storage-devices-challenge" title="High end storage devices (challenge)">High end storage devices (challenge)</a></li>
+<li><a href="#Internet-traffic-challenge" title="Internet traffic (challenge)">Internet traffic (challenge)</a></li>
+<li><a href="#DevOps-challenge" title="DevOps (challenge)">DevOps (challenge)</a></li>
+</ul>
+</li>
+<li class=""><a href="#Dapp-developers-agent" title="Dapp developers (agent)">Dapp developers (agent)</a><ul class="nav">
+<li class=""><a href="#Scalability-challenge" title="Scalability (challenge)">Scalability (challenge)</a></li>
+<li class=""><a href="#Security-challenge" title="Security (challenge)">Security (challenge)</a></li>
+</ul>
+</li>
+<li class=""><a href="#Core-developers-agent" title="Core developers (agent)">Core developers (agent)</a></li>
+<li><a href="#Entire-diagram" title="Entire diagram">Entire diagram</a></li>
+<li class=""><a href="#TODOs" title="TODOs">TODOs</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
