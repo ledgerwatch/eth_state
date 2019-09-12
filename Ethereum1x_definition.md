@@ -69,14 +69,11 @@ End users are mostly concerned with lack of use cases, transactional cost of usi
 ```graphviz
 digraph end_users {
 end_users [label="End users"];
-resources [label="Bring resources" shape="doubleoctagon"];
+resources [label="Resources" shape="doubleoctagon"];
 usage [label="Usage" shape="doubleoctagon"];
 no_usecases [label="Lack of use cases" shape="octagon"];
 tx_cost [label="Cost of transactions" shape="octagon"];
 tx_safety [label="Risk assessment" shape="octagon"];
-{rank=same end_users}
-{rank=same resources usage}
-{rank=same tx_cost tx_safety no_usecases}
 {resources usage} -> end_users [dir="back"]
 end_users -> {tx_cost tx_safety no_usecases}
 }
@@ -174,3 +171,48 @@ In the design of Ethereum, there some crucial concepts with double of tripple fu
 By "spontaneous voluntary contributions" we understand contributions to core implementation by people who are not explicitely asked to do the work, but decide to do it, because they found it interesting and/or important.
 By "managed development" we understand development in the core implementations that are directed by some leadership, according to some implementation plan.
 Both ways of development have their pros and cons. It seems that in the current circumstances we mainly rely on the spontaneous voluntary contributions and that seems to leave important gaps and technical debt.
+
+## Entire diagram
+```graphviz
+digraph agents {
+end_users [label="End users"];
+
+resources [label="Resources" shape="doubleoctagon"];
+usage [label="Usage" shape="doubleoctagon"];
+no_usecases [label="Lack of use cases" shape="octagon"];
+tx_cost [label="Cost of transactions" shape="octagon"];
+tx_safety [label="Risk assessment" shape="octagon"];
+{resources usage} -> end_users [dir="back"]
+end_users -> {tx_cost tx_safety no_usecases}
+
+node_ops [label="Node operators"];
+storage_devices [label="Costly high end storage devices" shape="octagon"];
+traffic [label="High internet traffic" shape="octagon"];
+dev_ops [label="Complex DevOps" shape="octagon"]
+node_ops -> storage_devices;
+node_ops -> traffic;
+node_ops -> dev_ops;
+
+dapp_devs [label="Dapp developers"];
+scalability [label="Scalability" shape="octagon"];
+security [label="Security" shape="octagon"];
+dapp_devs -> scalability;
+dapp_devs -> security;
+
+core_devs [label="Core developers"];
+
+new_implementations [label="New implementations" shape="octagon"];
+product_vs_system [label="Product vs System" shape="octagon"];
+backwards_compatibility [label="Backwards compatibility" shape="octagon"]
+core_devs -> {new_implementations product_vs_system backwards_compatibility};
+
+data_management [label="Data management" shape="hexagon"];
+new_implementations -> data_management [dir=back];
+state_growth [label="State growth" shape="hexagon"]
+data_management -> state_growth [dir=back];
+functional_coupling [label="Functional coupling" shape="hexagon"];
+backwards_compatibility -> functional_coupling [dir=back];
+spontaneous_vs_managed [label="Spontaneous vs managed" shape="hexagon"];
+product_vs_system -> spontaneous_vs_managed [dir=back];
+}
+```
