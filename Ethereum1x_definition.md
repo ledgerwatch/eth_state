@@ -17,11 +17,11 @@ agent
 We attempt to enumerate the most valuable and crucial contributions of the agents to the Ethereum system.
 
 ![Alt text](https://g.gravizo.com/svg?
-digraph contributions {
-agent;
-contribution [shape="doubleoctagon"];
-agent -> contribution;
-}
+  digraph contributions {
+  agent;
+  contribution [shape="doubleoctagon"];
+  agent -> contribution;
+  }
 )
 
 ### Challenges
