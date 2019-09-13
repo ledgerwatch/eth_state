@@ -3,12 +3,12 @@
 ## Objective
 This document aims to define and describe the Ethereum 1x initiative, with a primary goal of being used as a guide for funding and other support that various improvement proposals and projects should receive under the auspices of Ethereum 1x.
 
+## Definition
+We define Ethereum 1x as a set of solutions that seek to address the causes of the most critical challenges faced by the agents in the Ethereum system. TODO: this hinges on the determinations of which challenges are more critical than the others.
+
 ## Methodology and terminology
 For the purpose of this analysis, we view Ethereum as a set of interacting agents. Their interaction is described by the concepts of contributions and challenges.
 Ethereum system itsef is an emergent entity, and only exists as long as its crucial actors keep making their contributions. The goal of the Ethereum 1x as an initiative, is to preserse and improve the "wellfare" of this emergent entity, rather than any agents specifically.
-
-## Definition
-We define Ethereum 1x as a set of solutions that seek to address the causes of the most critical challenges faced by the agents in the Ethereum system. TODO: this hinges on the determinations of which challenges are more critical than the others.
 
 ### Agents
 Agents make contributions and thus, collectively, give rise to the Ethereum system. Their contributions also give the Etherum system its properties, such as resilience, efficiency, accessibility. Agents are shown as ellipses.
@@ -228,12 +228,12 @@ tx_safety -> reorgs [dir=back];
 finality_gadget [label="Finality gadget" shape=box style=filled fillcolor=lightblue];
 reorgs -> finality_gadget [dir=back];
 
-node_ops [label="Node operators" style=filled fillcolor=khaki];
+node_ops [label="Node operators" style=filled fillcolor=khaki href="#Node-operators-agent"];
 nodes [label="Network nodes" shape=doubleoctagon style=filled fillcolor=lawngreen dir=back];
 nodes -> node_ops;
 storage_devices [label="Cost of storage devices" shape=octagon style=filled fillcolor=plum];
 traffic [label="High internet traffic" shape=octagon style=filled fillcolor=plum];
-dev_ops [label="Complex DevOps" shape=octagon style=filled fillcolor=plum];
+dev_ops [label="Complex DevOps" shape=octagon style=filled fillcolor=plum href="#DevOps-challenge"];
 sync_time [label="Sync time" shape=octagon style=filled fillcolor=plum];
 node_ops -> {storage_devices traffic dev_ops sync_time}
 sync_time -> large_state [dir=back];
@@ -245,17 +245,17 @@ chain_security -> miners [dir=back];
 dapp_devs [label="Dapp developers" style=filled fillcolor=khaki];
 use_cases [label="Use cases" shape=doubleoctagon style=filled fillcolor=lawngreen];
 use_cases -> dapp_devs [dir=back];
-scalability [label="Scalability" shape=octagon style=filled fillcolor=plum];
-security [label="Security" shape=octagon style=filled fillcolor=plum];
+scalability [label="Scalability" shape=octagon style=filled fillcolor=plum href="#Scalability-challenge"];
+security [label="Security" shape=octagon style=filled fillcolor=plum href="#Security-challenge"];
 dapp_devs -> scalability;
 dapp_devs -> security;
 
-core_devs [label="Core developers" style=filled fillcolor=khaki];
+core_devs [label="Core developers" style=filled fillcolor=khaki href="#Core-developers-agent"];
 software [label="Node software" shape=doubleoctagon style=filled fillcolor=lawngreen];
 software -> core_devs [dir=back];
-new_implementations [label="New implementations" shape=octagon style=filled fillcolor=plum];
-product_vs_system [label="Product vs System" shape=octagon style=filled fillcolor=plum];
-backwards_compatibility [label="Backwards compatibility" shape=octagon style=filled fillcolor=plum]
+new_implementations [label="New implementations" shape=octagon style=filled fillcolor=plum href="#New-implementations-challenge"];
+product_vs_system [label="Product vs System" shape=octagon style=filled fillcolor=plum href="#Product-vs-system-challenge"];
+backwards_compatibility [label="Backwards compatibility" shape=octagon style=filled fillcolor=plum href="#Backwards-compatibility-challenge"]
 core_devs -> {new_implementations product_vs_system backwards_compatibility};
 
 data_management [label="Data management" shape=hexagon style=filled fillcolor=salmon];
