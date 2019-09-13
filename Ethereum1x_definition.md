@@ -6,6 +6,10 @@ This document aims to define and describe the Ethereum 1x initiative, with a pri
 ## Methodology and terminology
 For the purpose of this analysis, we view Ethereum as a set of interacting agents. Their interaction is described by the concepts of contributions and challenges.
 Ethereum system itsef is an emergent entity, and only exists as long as its crucial actors keep making their contributions. The goal of the Ethereum 1x as an initiative, is to preserse and improve the "wellfare" of this emergent entity, rather than any agents specifically.
+
+## Definition
+We define Ethereum 1x as a set of solutions that seek to address the causes of the most critical challenges faced by the agents in the Ethereum system. TODO: this hinges on the determinations of which challenges are more critical than the others.
+
 ### Agents
 Agents make contributions and thus, collectively, give rise to the Ethereum system. Their contributions also give the Etherum system its properties, such as resilience, efficiency, accessibility. Agents are shown as ellipses.
 ```graphviz
@@ -195,13 +199,20 @@ Both ways of development have their pros and cons. It seems that in the current 
 ```graphviz
 digraph agents {
 rankdir=LR;
+
+contributions [label="CONTRIBUTIONS" shape=box penwidth=0 fontsize=17];
+agents [label="AGENTS" shape=box penwidth=0 fontsize=17];
+challenges [label="CHALLENGES" shape=box penwidth=0 fontsize=17];
+causes [label="CAUSES" shape=box penwidth=0 fontsize=17];
+solutions [label="SOLUTIONS" shape=box penwidth=0 fontsize=17];
+
 end_users [label="End users" href="#End-users-agent" style=filled fillcolor=khaki];
 
 resources [label="Resources" shape=doubleoctagon style=filled fillcolor=lawngreen];
 usage [label="Usage" shape=doubleoctagon style=filled fillcolor=lawngreen];
 tx_cost [label="Cost of transactions" shape=octagon style=filled fillcolor=plum];
 tx_safety [label="Risk assessment" shape=octagon style=filled fillcolor=plum];
-{resources usage} -> end_users [dir="back"]
+{resources usage} -> end_users [dir=back]
 end_users -> {tx_cost tx_safety}
 
 gas_limit [label="Block gas limit" shape=hexagon style=filled fillcolor=salmon];
@@ -218,21 +229,22 @@ finality_gadget [label="Finality gadget" shape=box style=filled fillcolor=lightb
 reorgs -> finality_gadget [dir=back];
 
 node_ops [label="Node operators" style=filled fillcolor=khaki];
-nodes [label="Network nodes" shape=doubleoctagon style=filled fillcolor=lawngreen];
+nodes [label="Network nodes" shape=doubleoctagon style=filled fillcolor=lawngreen dir=back];
 nodes -> node_ops;
 storage_devices [label="Cost of storage devices" shape=octagon style=filled fillcolor=plum];
 traffic [label="High internet traffic" shape=octagon style=filled fillcolor=plum];
 dev_ops [label="Complex DevOps" shape=octagon style=filled fillcolor=plum];
 sync_time [label="Sync time" shape=octagon style=filled fillcolor=plum];
 node_ops -> {storage_devices traffic dev_ops sync_time}
+sync_time -> large_state [dir=back];
 
 miners [label="Miners" style=filled fillcolor=khaki];
 chain_security [label="Chain security" shape=doubleoctagon style=filled fillcolor=lawngreen];
-chain_security -> miners;
+chain_security -> miners [dir=back];
 
 dapp_devs [label="Dapp developers" style=filled fillcolor=khaki];
 use_cases [label="Use cases" shape=doubleoctagon style=filled fillcolor=lawngreen];
-use_cases -> dapp_devs;
+use_cases -> dapp_devs [dir=back];
 scalability [label="Scalability" shape=octagon style=filled fillcolor=plum];
 security [label="Security" shape=octagon style=filled fillcolor=plum];
 dapp_devs -> scalability;
@@ -240,7 +252,7 @@ dapp_devs -> security;
 
 core_devs [label="Core developers" style=filled fillcolor=khaki];
 software [label="Node software" shape=doubleoctagon style=filled fillcolor=lawngreen];
-software -> core_devs;
+software -> core_devs [dir=back];
 new_implementations [label="New implementations" shape=octagon style=filled fillcolor=plum];
 product_vs_system [label="Product vs System" shape=octagon style=filled fillcolor=plum];
 backwards_compatibility [label="Backwards compatibility" shape=octagon style=filled fillcolor=plum]
@@ -259,10 +271,16 @@ product_vs_system -> spontaneous_vs_managed [dir=back];
 
 state_rent [label="State rent" shape=box style=filled fillcolor=lightblue];
 large_state -> state_rent [dir=back];
-backwards_compatibility -> state_rent [dir=back style="dotted"];
+backwards_compatibility -> state_rent [dir=back style=dotted label="worsen"];
 
 stateless [label="Stateless clients" shape=box style=filled fillcolor=lightblue];
 data_management -> stateless [dir=back];
+
+{rank=same; contributions use_cases}
+{rank=same; agents dapp_devs}
+{rank=same; challenges storage_devices tx_cost dev_ops tx_safety sync_time}
+{rank=same; causes gas_limit}
+{rank=same; solutions stateless state_rent fee_burn finality_gadget}
 }
 ```
 
@@ -270,3 +288,4 @@ data_management -> stateless [dir=back];
 - [ ] Discuss and correct methodology, wording, and content (specically the challenges)
 - [ ] Levels of criticality for challenges, perhaps expressed by colours
 - [ ] Add remaining open projects to the solutions
+- [ ] Place correct hyperlinks on all the nodes in the diagram
