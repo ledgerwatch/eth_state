@@ -1,5 +1,8 @@
 # Ethereum 1x Definition (part 2)
 
+## Methodology (continuation from part 1)
+In part 1, we define agents, their contributions to the Ethereum system, and their challenges. This part deals with causes for these challenges, as well as the solution that have been proposed for these causes.
+
 ### Causes
 We try to understand the main causes of each challenge. Where it adds to understanding, we talk about sub-causes
 ```graphviz
@@ -13,7 +16,7 @@ cause -> sub_cause [dir=back];
 }
 ```
 ### Solutions
-Proposed solutions should be targeted at the causes but may have side-effects (some solutions may be causes for other challenges, though perhaps less critical than the ones they are trying to address)
+Proposed solutions should be targeted at the causes but may have side-effects (some solutions may be causes for other challenges, though perhaps less critical than the ones they are trying to address). These side effects are shown as dotted lines.
 ```graphviz
 digraph solutions {
 rankdir=LR;
@@ -25,6 +28,31 @@ challenge -> solution [dir=back style=dotted]
 }
 ```
 
+## Summary of challenges
+Here we summarise the challenges we have identified in the part 1.
+1. Long time to sync a new node
+2. Cost of storage devices
+3. High internet traffic
+4. Complex DevOps to run nodes
+5. Balancing between updating rules and maintaining backwards compatibility
+6. Balacing between improving client implementations as product and updating the rules of Ethereum
+7. Difficulty of writing new implementations
+8. Limited transaction throughput
+9. Difficulty of assessing safely of some transactions (to smart contracts)
+10. Difficulty in estimating cost of a transaction
+
+## Prioriting of challenges
+Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges not being met. For example, if the challenge **Long time to sync a new node** is not met, and the sync time keeps growing, we can predict that at some point in the future, the network will become really difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient in the case of some node operators disappering.
+
+## Summary of causes
+Here we summarise the causes for the challenges:
+1. Large (and growing) state
+2. Snapshot sync algorithm implementation deficiencies - e.g. sensitivity to network latencies (how much slower alrorithm performs with an increase in latency) and traffic usage efficiency (how much more data algorithm transmits with an increase of state size)
+3. Increasingly intricate data management that an Ethereum node needs to perform (e.g. data caching strategies, partioning data by usage type).
+4. Functional coupling on implementation level. Example - persistent storage of state as a merkle particia tree, which couples logical structure needed to compute state root, and physical structure needed to store the state. Such coupling makes it harder to switch to binary merkle tree for hashing the state.
+5. Functional coupling on "protocol" level. Example - notion of gas couples two functions (charge for resource usage and restriction of callbacks and recursion) that are getting in conflict with each other.
+6. Transaction fee market behaves suboptimally when blocks are at the block gas limit (which is currently almost always).
+7. Possibility of long chain reorgs.
 
 ```graphviz
 digraph new_implementations {
