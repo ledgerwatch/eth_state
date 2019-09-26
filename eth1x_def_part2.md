@@ -60,7 +60,7 @@ Here we summarise the causes for the challenges. Most of them are technological 
 7. EVM design favours expressiveness over tractability
 8. Transaction fee market behaves suboptimally when blocks are at the block gas limit (which is currently almost always).
 9. Possibility of long chain reorgs.
-10. Reliance of spontaneous contributions.
+10. Over-reliance of spontaneous contributions.
 
 ## Description of causes
 
@@ -89,7 +89,7 @@ Definition of semantic gap from www.techopedia.com:
 
 After EVM has been designed and implemented, it turned out that there are many use cases, specifically involving cryptographic primitives (e.g. hashing algorithms, digital signatures) whose implementation in EVM opcodes would consume prohibitive amounts of gas.
 
-### Reliance of spontaneous contributions
+### Over-reliance of spontaneous contributions
 By "spontaneous voluntary contributions" we understand contributions to core implementation by people who are not explicitely asked to do the work, but decide to do it, because they found it interesting and/or important.
 By "managed development" we understand development in the core implementations that are directed by some leadership, according to some implementation plan.
 Both ways of development have their pros and cons. It seems that in the current circumstances we mainly rely on the spontaneous voluntary contributions and that seems to leave important gaps and technical debt.
@@ -109,3 +109,13 @@ At this moment, only solutions to the technological causes are listed and explai
 11. Upgrade of the Proof Of Work alorithm (ProgPOW)
 12. State management component (interface design)
 
+## Description of solutions
+### State rent
+State rent is the only currently proposed solution to descreasing of the state size. All other solutions are concerned with how to deal with the large (and growing) state size more efficiently and prevent some of the most obvious failure modes.
+
+### Stateless clients
+Statless clients is one of the approaches to improve performance of Ethereum client implementations while processing blocks of transactions. Specifically, it seeks to alleviate the increasing burden that is the state size. It does so by removing the need to download, or implicitely construct and maintain the state, for the majority of the participants in the Ethereum network. The requirement of the access to the state is removed by introducing another type of data packets (existing data packet types are, for example, blocks and transactions) to be gossipped around the p2p network. We call this data packets "block witnesses". For each block we have one corresponding block witness. The two main properties that block witnesses have:
+1. It is possible to efficiently verify that the block witness is indeed constructed from the correct version of the Ethereum state.
+2. Block witness has all the required information to make it possible to execute the corresponding block.
+
+More details can be found here: https://medium.com/@akhounov/data-from-the-ethereum-stateless-prototype-8c69479c8abc
