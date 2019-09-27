@@ -44,9 +44,21 @@ Here we summarise the challenges we have identified in the part 1.
 ## Description of challenges
 
 ### Long time to sync a new node
+When a new computer joins the Ethereum network, it needs to obtain the current state before it can start processing arbitrary transactions. The current state can be obtained in two main ways.
+Firstly, the current state can be computed from the Genesis block, by applying (executing all transactions within) all the blocks in sequence. This method is now computationally hard due to the number of blocks (and transactions in them) to apply, and due to the size of the state.
+Secondly, the current state can be downloaded from the peers that already computed (or downloaded) it. This method is not as hard computationally, but it requires a lot of communication with the peers, due to the size and the structure of the state.
 
+### Cost of storage devices
+One can divide the persistent data managed by an Ethereum client into two main categories. First category is the data that very rarely changes after being written down. This category includes the content of downloaded block headers, block bodies, transaction receipts. Since chain reorganisations are relatively rare and "shallow" (meaning that not many blocks are getting reverted), one can store these data in an append-only form. This makes it feasible to store such data in a lower-cost devices such as HDD (Hard Disk Drives), or even tape (which is the cheapest storage device at the moment of writing). In fact, the "Freezer" implementation in go-ethereum 1.9 is based on these observations.
+Second category is the data that is expected to change constantly. This includes mostly the active state of Ethereum, but also some indices for the append-only data. The Ethereum state is special in this category, because not only it constantly changes, but practically any part of it needs to be available for access at a short notice. To achieve maximum performance, one would choose storage devices with lower latency (SSD instead of HDD), and/or with higher capacity for parallel reads (NVM instead of SSD). As the state grows, cost of these devices may grow superlinearly.
 
-## Prioriting of challenges
+### High internet traffic
+Ethereum nodes constantly communicate with their peers in the network. In any peer to peer distribution network, being a "fair" participant requires not only satisfy one's own needs for data, but also provide data for the others. Depending on how many new nodes are joining the network, and what is current transaction activity, the internet traffic usage can be unpredictable.
+
+### Complex DevOps to run a node
+The art of DevOps is how to run the infrastructure in a way that causes the least disruption, is cost-efficient, and satisfy the functional requirements of the individual, business, or any organisation owning that infrastructure.
+
+## Prioritising of challenges
 Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges not being met. For example, if the challenge **Long time to sync a new node** is not met, and the sync time keeps growing, we can predict that at some point in the future, the network will become really difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient in the case of some node operators disappering.
 
 ## Summary of causes
@@ -99,7 +111,7 @@ At this moment, only solutions to the technological causes are listed and explai
 1. State rent
 2. Stateless clients
 3. Advanced sync protocols and algorithms (Leaf sync, Beam sync, Firehose/Red Queen)
-4. Content Distribution Networks (CDN) to store blocks and/or state
+4. Content Distribution Networks (Cloudflare, Swarm, etc.) to store blocks and/or state
 5. Decoupling of two functions of gas
 6. Burning part of the transaction fees (EIP-1559)
 7. Flat data layout (like in Turbo-Geth)
