@@ -34,8 +34,8 @@ Here we summarise the challenges we have identified in the part 1.
 2. Cost of storage devices
 3. High internet traffic
 4. Complex DevOps to run nodes
-5. Balancing between updating rules and maintaining backwards compatibility
-6. Balacing between improving client implementations and updating the rules of Ethereum
+5. Balancing between updating rules of Ethereum and maintaining backwards compatibility
+6. Balacing between updating the rules of Ethereum and improving client implementations and 
 7. Difficulty of writing new implementations
 8. Limited transaction throughput
 9. Difficulty of assessing safety of some transactions (to smart contracts)
@@ -56,10 +56,29 @@ Second category is the data that is expected to change constantly. This includes
 Ethereum nodes constantly communicate with their peers in the network. In any peer to peer distribution network, being a "fair" participant requires not only satisfy one's own needs for data, but also provide data for the others. Depending on how many new nodes are joining the network, and what is current transaction activity, the internet traffic usage can be unpredictable.
 
 ### Complex DevOps to run a node
-The art of DevOps is how to run the infrastructure in a way that causes the least disruption, is cost-efficient, and satisfy the functional requirements of the individual, business, or any organisation owning that infrastructure.
+The art of DevOps is how to run the infrastructure in a way that causes the least disruption, is cost-efficient, and satisfy the functional requirements of the individual, business, or any organisation owning that infrastructure. Most of the complexities of running Ethereum nodes are usually related to the management of persistent data. Here are some operations that can be challenging, considering the amount of data and its dynamic character:
+
+* creating replicas of data to bootstrap new nodes
+* maintaining backups
+* pruning old histories
+* recovering from database corruptions
+* upgrading to new database formats
+* representing data in a format convinient for analysis
+
+### Balancing between updating rules of Ethereum and maintaining backwards compatibility
+Quite often, the rules of Ethereum need to be updated, for the following reasons:
+
+* Implement a missing but very useful feature
+* Fix a flaw in the original design
+* Adjust to a change in the technological landscape
+
+Smart contracts that have been deployed using old rules, may come to rely on those rules, explicitely or implicitely. When such contracts are still in frequent use, the challenge is to balance their need to exist in their original form (often, code improvements and redeployments solve the issue), and the need to update the rules. 
+
+### Balacing between  updating rules of Ethereum and improving client implementations
+For reasons mentioned ealier, it is often necessary to update rules of Ethereum. When this happens, there is mandatory work for every Ethereum client implementation team who want their implementation to include the support for the update and stay revelant in the ecosystem. This work natually detracts from other, equally important work on constantly improving and optimising the implementations to keep up with the growing demands of the system. The balance between these two types of work can be difficult to strike.
 
 ## Prioritising of challenges
-Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges not being met. For example, if the challenge **Long time to sync a new node** is not met, and the sync time keeps growing, we can predict that at some point in the future, the network will become really difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient in the case of some node operators disappering.
+Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges becomes overwhelming. For example, if the challenge **Long time to sync a new node** becomes overwhelming, and the sync time keeps growing, we can predict that at some point in the future, the network will become really difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient in the case of some node operators disappering.
 
 ## Summary of causes
 Here we summarise the causes for the challenges. Most of them are technological in nature, though some could be viewed as organisational.
@@ -75,6 +94,7 @@ Here we summarise the causes for the challenges. Most of them are technological 
 10. Over-reliance of spontaneous contributions.
 
 ## Description of causes
+
 
 ### Large (and growing) state
 Ethereum's state is a data structure that needs to be implicitely constructed, stored and accessed in order to be able to execute arbitrary transactions. This is because a transaction may theoretically access any item in the current state. The state size grew beyond the capacity of RAM (Random Access Memory) on average computers some time in 2017. After that point, RAM could only be used to cache certain portions of the state, whereas the entirety of the state reside on persitent storage devices. Any caching strategy apart from keeping a random portion of the accessible state, would be vulnerable to attack. Therefore, assuming that random caching strategy, the cache hit ratio would very close to the ratio of size of the cache to the size of the entire state. And cache miss would mean accessing devices with much higher latency.
@@ -101,7 +121,7 @@ Definition of semantic gap from www.techopedia.com:
 
 After EVM has been designed and implemented, it turned out that there are many use cases, specifically involving cryptographic primitives (e.g. hashing algorithms, digital signatures) whose implementation in EVM opcodes would consume prohibitive amounts of gas.
 
-### Over-reliance of spontaneous contributions
+### Over-reliance on spontaneous contributions
 By "spontaneous voluntary contributions" we understand contributions to core implementation by people who are not explicitely asked to do the work, but decide to do it, because they found it interesting and/or important.
 By "managed development" we understand development in the core implementations that are directed by some leadership, according to some implementation plan.
 Both ways of development have their pros and cons. It seems that in the current circumstances we mainly rely on the spontaneous voluntary contributions and that seems to leave important gaps and technical debt.
