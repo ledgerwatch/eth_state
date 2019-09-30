@@ -77,6 +77,12 @@ Smart contracts that have been deployed using old rules, may come to rely on tho
 ### Balacing between  updating rules of Ethereum and improving client implementations
 For reasons mentioned ealier, it is often necessary to update rules of Ethereum. When this happens, there is mandatory work for every Ethereum client implementation team who want their implementation to include the support for the update and stay revelant in the ecosystem. This work natually detracts from other, equally important work on constantly improving and optimising the implementations to keep up with the growing demands of the system. The balance between these two types of work can be difficult to strike.
 
+### Difficulty of writing new implementations
+Sice Ethereum's launch in August 2015, many teams have attempted to produce working implementation of Ethereum. Initially, there was a great variety of such projects. However, as the system's usage grew, most of implementations because non-viable or too difficult to maintain, despite the fact that the number of rule changes is still relatively modest.
+
+### Limited transaction throughput
+For Dapp developers, it is important to understand limitation of the Ethereum as a platform. One of the main limitation is the transaction throughput. 
+
 ## Prioritising of challenges
 Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges becomes overwhelming. For example, if the challenge **Long time to sync a new node** becomes overwhelming, and the sync time keeps growing, we can predict that at some point in the future, the network will become really difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient in the case of some node operators disappering.
 
@@ -134,7 +140,7 @@ At this moment, only solutions to the technological causes are listed and explai
 4. Content Distribution Networks (Cloudflare, Swarm, etc.) to store blocks and/or state
 5. Decoupling of two functions of gas
 6. Burning part of the transaction fees (EIP-1559)
-7. Flat data layout (like in Turbo-Geth)
+7. Alternative data layouts and databases
 8. Adding precompiles (generic elliptic curve precompiles, BLAKE hash function)
 9. Introducing WASM engine
 10. Finality gadget to link Ethereum 1x to the Beacon chain
