@@ -89,7 +89,7 @@ For transactions sent to smart contracts, safety assessment is harder, because t
 It is believed that design of the execution engine (EVM in case of Ethereum) can be done in a way to make security analysis and formal verfication of smart contracts significantly easier and cheaper.
 
 ### Estimating cost of a transaction
-Gas price is a means of auctioning the limited space within the Ethereum blocks to the transaction senders.
+Gas price is a means of auctioning the limited space within the Ethereum blocks to the transaction senders. Such auctons work well when the space in the blocks is not fully utilised. However, when the blocks are becoming consistently full, higher gas price volatility is observed, and the transaction senders tend to overpay for gas, realising that they are competing with other senders. High volatility of gas prices makes the estimation of correct price to pay more complex. 
 
 ## Prioritising of challenges
 Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges becomes overwhelming. For example, if the challenge **Long time to sync a new node** becomes overwhelming, and the sync time keeps growing, we can predict that in the future, the network will become difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient with some node operators disappearing.
