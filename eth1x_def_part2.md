@@ -88,6 +88,9 @@ For simple Ether transferring transaction, safety usually comes down to how well
 For transactions sent to smart contracts, safety assessment is harder, because the code of the smart contract may trigger undesirable actions if it is flawed or misused, intentionally or not. Often, Dapp developers attempt to assure the users of the safety of their contracts by conduction or commissioning security audits, offering bug bounties, or attempting to formally prove some safety properties.
 It is believed that design of the execution engine (EVM in case of Ethereum) can be done in a way to make security analysis and formal verfication of smart contracts significantly easier and cheaper.
 
+### Estimating cost of a transaction
+Gas price is a means of auctioning the limited space within the Ethereum blocks to the transaction senders.
+
 ## Prioritising of challenges
 Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges becomes overwhelming. For example, if the challenge **Long time to sync a new node** becomes overwhelming, and the sync time keeps growing, we can predict that in the future, the network will become difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient with some node operators disappearing.
 
