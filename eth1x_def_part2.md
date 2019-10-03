@@ -34,8 +34,8 @@ Here we summarise the challenges we have identified in the part 1.
 2. Cost of storage devices
 3. High internet traffic
 4. Complex DevOps to run nodes
-5. Balancing between updating rules of Ethereum and maintaining backwards compatibility
-6. Balancing between updating the rules of Ethereum and improving client implementations and 
+5. Conflict between updating rules of Ethereum and maintaining backwards compatibility
+6. Conflict between updating the rules of Ethereum and improving client implementations and 
 7. Difficulty of writing new implementations
 8. Limited transaction throughput
 9. Assessing safety of transactions
@@ -65,17 +65,17 @@ The art of DevOps is how to run the infrastructure in a way that causes the leas
 * upgrading to new database formats
 * representing data in a format convenient for analysis
 
-### Balancing between updating rules of Ethereum and maintaining backwards compatibility
+### Conflict between updating rules of Ethereum and maintaining backwards compatibility
 Often, the rules of Ethereum need to be updated because:
 
 * Implement a missing but very useful feature
 * Fix a flaw in the original design
 * Adjust to a change in the technological landscape
 
-Smart contracts that have been deployed using old rules, may come to rely on those rules, explicitly or implicitly. When such contracts are still in frequent use, the challenge is to balance their need to exist in their original form (often, code improvements and redeployments solve the issue), and the need to update the rules. 
+Smart contracts that have been deployed using old rules, may come to rely on those rules, explicitly or implicitly. When such contracts are still in frequent use, the challenge is to balance their need to exist in their original form (often, code improvements and redeployments solve the issue), and the need to update the rules.
 
-### Balancing between  updating rules of Ethereum and improving client implementations
-For reasons mentioned earlier, it is often necessary to update rules of Ethereum. When this happens, there is mandatory work for every Ethereum client implementation team who want their implementation to include the support for the update and stay relevant in the ecosystem. This work naturally detracts from other, equally important work on constantly improving and optimising the implementations to keep up with the growing demands of the system. The balance between these two types of work can be difficult to strike.
+### Conflict between  updating rules of Ethereum and improving client implementations
+For reasons mentioned earlier, it is often necessary to update rules of Ethereum. When this happens, there is mandatory work for every Ethereum client implementation team who want their implementation to include the support for the update and stay relevant in the ecosystem. This work may distract from other, equally important work on constantly improving and optimising the implementations to keep up with the growing demands of the system. The balance between these two types of work can be difficult to strike. Ideally, there should be no conflict and the two efforts should be aligned.
 
 ### Difficulty of writing new implementations
 Sice Ethereum's launch in August 2015, many teams have attempted to produce working implementation of Ethereum. Initially, there was a great variety of such projects. However, as the system's usage grew, most implementations became non-viable or too difficult to maintain, although the number of rule changes is still relatively modest.
@@ -93,6 +93,58 @@ Gas price is a means of auctioning the limited space within the Ethereum blocks 
 
 ## Prioritising of challenges
 Although any prioritisation of challenges would appear subjective, the approach is to compare the impact of challenges becomes overwhelming. For example, if the challenge **Long time to sync a new node** becomes overwhelming, and the sync time keeps growing, we can predict that in the future, the network will become difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient with some node operators disappearing.
+
+### Long time to sync a new node
+It this challenge becomes overwhelming, and the sync time keeps growing, we can predict that in the future, the network will become difficult or impossible to join for the new operators. Although this will not immediately cause the system to fall, it will make it less resilient with some node operators disappearing. Even insentivising such node operators is unlikely to stop this tendency.
+
+### Cost of storage devices
+If this challenge becomes overwhelming, and the cost of storage devices keeps growing, the number of node operators may reduce, unless there is a way of compensating node operators.
+
+### High internet traffic
+If this challenge becomes overwhelming, and the demands of internet traffic grows, it is unclear what consequences there will be, because the cost of internet traffic appears to be insignificant compared to other costs involved in running an Ethereum node.
+
+### Complex DevOps to run a node
+If this challenge becomes overwhelming, and the running an Ethereum node becomes operationally challenging, it is not clear what consequences will be. There are already mitigations to this challenge, in the form of pre-packages solutions to run node (like DappNode), service providers who specialise in hosting Ethereum node, and some cloud operators potentially offering Ethereum nodes "as a service".
+
+### Conflict between updating rules of Ethereum and maintaining backwards compatibility
+If this challenge becomes overwheleming, there are at least two possible scenarios:
+
+1. Insufficient change of rules
+2. Too many changes breaking backwards compatibility
+
+Both of these require further analysis. Possible consequences of insufficient change incude:
+
+ * eventual imbalance of gas schedule and DOS attacks on the system
+ * inability to respond to highly desired feature requests
+ * inability to fix design flaws and allow performance breakthroughs
+
+Possible consequences of too many changes breaking backwards compatibility include:
+
+ * Some popular contracts become obsolete or require redesign and redeployment
+
+### Conflict between updating rules of Ethereum and improving client implementations
+If this challenge becomes overwhelming, there are at least two scenarios:
+
+1. Client implementations struggle to keep up with the growth of the system, while most of the time is spent on updating the rules.
+2. Updating rules slows down while core developers are busy with optimisations.
+
+In the first scenario, one potential consequence is the reduction of the block gas limit to protect the implementations from breaking. After that, either existing implementations catch up, new implementation appears, or the system fails.
+In the second scenario, the downside is prolonged "feature freeze".
+
+### Difficulty of writing new implementations
+If this challenge becomes overwhelming, the consequence
+is the reduction of viable implementations, and increased reliance on the resposible teams for the decision making about the rules of Ethereum.
+
+### Limited transaction throughput
+If this challenge becomes overwhelming, that can mean one of two situations:
+1. Transaction throughput starts to decline
+2. Transaction throughput stays the same despite an expectation that it will increase.
+
+First situation is more serious, and it would mean the reduction in the block gas limit as response to DOS attack or low performance of client implementations.
+Second situation is less serious, but lead to "disappointment" in Ethereum as a smart contract platform. Currently, there seems to be an expectation that greatly increased transaction throughput will come from Ethereum 2, and Ethereum 1 can at best deliver x10 improvement. As long as such expectation remains justified, the status quo appears to be sustainable.
+
+### Assessing safety of transactions
+It is difficult to say if this challenge can become overwhelming. Perpahs, some researchers in formal verification and security of smart contracts will come to general conclusion that it does not make economic sense to try to advance this without fundamental change of the EVM design. Some designers and developers of alternative smart contract platforms (e.g. Tezos) certain think so. 
 
 ## Summary of causes
 Here we summarise the causes for the challenges. Most of them are technological, though some could be viewed as organisational.
