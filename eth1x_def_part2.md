@@ -144,7 +144,10 @@ First situation is more serious, and it would mean the reduction in the block ga
 Second situation is less serious, but lead to "disappointment" in Ethereum as a smart contract platform. Currently, there seems to be an expectation that greatly increased transaction throughput will come from Ethereum 2, and Ethereum 1 can at best deliver x10 improvement. As long as such expectation remains justified, the status quo appears to be sustainable.
 
 ### Assessing safety of transactions
-It is difficult to say if this challenge can become overwhelming. Perpahs, some researchers in formal verification and security of smart contracts will come to general conclusion that it does not make economic sense to try to advance this without fundamental change of the EVM design. Some designers and developers of alternative smart contract platforms (e.g. Tezos) certain think so. 
+It is difficult to say if this challenge can become overwhelming. Perhaps, some researchers in formal verification and security of smart contracts will come to general conclusion that it does not make economic sense to try to advance this without fundamental change of the EVM design. Some designers and developers of alternative smart contract platforms (e.g. Tezos) certainly think so. 
+
+### Estimating cost of a transaction
+If this challenge becomes overwhelming, it would mean that the gas prices are consistenty very volatile and it is hard to estimate a required fee to ensure that the transactions get confirmed in timely manner. The worst affected would be people, companies, and organisations, whole operations depend on sending and confirming large number of transactions, for example, exchanges (for deposits and withdrawals, and for trading in case of decentralised exchanges), mining pools (for payouts), popular Dapps. When gas prices are volatile, it becomes more economically attractive to perform transaction front-running and use mechanisms like GasToken to "accumulate" gas at lower prices to release it at higher prices.
 
 ## Summary of causes
 Here we summarise the causes for the challenges. Most of them are technological, though some could be viewed as organisational.
