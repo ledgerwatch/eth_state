@@ -87,6 +87,7 @@ For Dapp developers, it is important to understand limitations of the Ethereum a
 For simple Ether transferring transaction, safety usually comes down to how well the private key is protected, and how secure is the generation of the digital signature (i.e. that it does not leak information about the private key by generating bad random numbers).
 For transactions sent to smart contracts, safety assessment is harder, because the code of the smart contract may trigger undesirable actions if it is flawed or misused, intentionally or not. Often, Dapp developers attempt to assure the users of the safety of their contracts by conduction or commissioning security audits, offering bug bounties, or attempting to formally prove some safety properties.
 It is believed that design of the execution engine (EVM in case of Ethereum) can be done in a way to make security analysis and formal verfication of smart contracts significantly easier and cheaper.
+Another important consideration for safety is the probability of a transaction being reverted due to the chain reorganisations. Unintentional chain reorganisations happen all the time, but their depth is usually quite low. Therefore, the rule of "wait X number of blocks and consider transaction final" works quite well for dealing with unintentional reorganisations. Intentional reorganisations are often referred to as "51% attacks", though the term may be inaccurate. When dealing with transactions of large value, the safety assessment need to include the risk of intentional reorganisations.
 
 ### Estimating cost of a transaction
 Gas price is a means of auctioning the limited space within the Ethereum blocks to the transaction senders. Such auctons work well when the space in the blocks is not fully utilised. However, when the blocks are becoming consistently full, higher gas price volatility is observed, and the transaction senders tend to overpay for gas, realising that they are competing with other senders. High volatility of gas prices makes the estimation of correct price to pay more complex. 
@@ -144,7 +145,13 @@ First situation is more serious, and it would mean the reduction in the block ga
 Second situation is less serious, but lead to "disappointment" in Ethereum as a smart contract platform. Currently, there seems to be an expectation that greatly increased transaction throughput will come from Ethereum 2, and Ethereum 1 can at best deliver x10 improvement. As long as such expectation remains justified, the status quo appears to be sustainable.
 
 ### Assessing safety of transactions
-It is difficult to say if this challenge can become overwhelming. Perhaps, some researchers in formal verification and security of smart contracts will come to general conclusion that it does not make economic sense to try to advance this without fundamental change of the EVM design. Some designers and developers of alternative smart contract platforms (e.g. Tezos) certainly think so. 
+This challenge can become overwhelming in two ways:
+
+1. Researchers in formal verification and security of smart contracts come to general conclusion that it does not make economic sense to try to advance this without fundamental change of the EVM design
+2. Intentional reorganisations become possible and sometimes happen in practice
+
+If the challenge becomes overwhelming in the first way, it would lead to potentially large use cases only being deployed on Ethereum for limited use (e.g. limitation no more than $10 million in a smart contract that was suggested straight after "The DAO incident").
+The second way is more immediately alarming, because it would affect even people, companies and organisation that do not utilise sophisticated smart contracts, but rely on simple Ether transfer transactions.
 
 ### Estimating cost of a transaction
 If this challenge becomes overwhelming, it would mean that the gas prices are consistenty very volatile and it is hard to estimate a required fee to ensure that the transactions get confirmed in timely manner. The worst affected would be people, companies, and organisations, whole operations depend on sending and confirming large number of transactions, for example, exchanges (for deposits and withdrawals, and for trading in case of decentralised exchanges), mining pools (for payouts), popular Dapps. When gas prices are volatile, it becomes more economically attractive to perform transaction front-running and use mechanisms like GasToken to "accumulate" gas at lower prices to release it at higher prices.
